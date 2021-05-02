@@ -1,0 +1,445 @@
+---
+title: "ANUÁRIO ESTATÍSTICO DE ACIDENTES DE TRÂNSITO DO PARÁ 2020"
+author:
+- name: MÁRIO VALENTE
+-       (Analista de Trânsito)
+- name: KLEBER SALIM
+-       (Coordenador de Planejamento)
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    highlight: textmate
+    number_sections: yes
+    theme: cerulean
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+institute: DETRAN-PA 2021
+abstract: " Em fase de Construção"
+---
+<style>
+body{
+text-align: justify}
+</style>
+
+
+
+# **Prefácio**
+
+Os estudos estatísticos são ferramentas importantes para planejamento, coleta de dados, organização de informações, análise, interpretação e divulgação de resultados. Para o Departamento de Trânsito do Pará, a publicação do Anuário Estatístico de Trânsito mostra, também, como políticas públicas podem resultar em melhorias para a mobilidade urbana, obras de infraestrutura, campanhas educativas e ações de grande impacto na comunidade. Este levantamento reúne o trabalho de instituições e entidades que colaboram para dar continuidade ao registro do trânsito paraense.   
+
+A apresentação das informações sobre o trânsito de uma cidade, estado ou país precisam obrigatoriamente ser confiáveis, afinal, são nelas que se baseiam políticas públicas pensadas na mobilidade urbana, obras de infraestrutura diversas, campanhas educativas e ações de grande impacto na comunidade. Sem dados consistentes, a compreensão sobre o tema é equivocada e a solução de problemas fica ainda mais difícil. A preocupação primordial do ***DETRAN PARÁ***, ao lançar a primeira edição do Anuário Estatístico de Trânsito, é a confiabilidade dos dados reunidos. Esta publicação pode contribuir para o trabalho dos gestores públicos, pesquisadores, estudantes e para o conhecimento da população em geral. O material é disponibilizado no site da instituição para manter a transparência dos serviços prestados no Estado do Paraná com agilidade, eficiência e qualidade ao cidadão.
+
+Os relatórios ora disponibilizados nesta publicação, de modo geral, estão em dissonância com as necessidades estatísticas do DETRAN-PA, porém nosso material, salvo melhor juízo, é para ser utilizado em ações futuras contribuindo para um trânsito melhor e mais seguro
+
+
+
+# **Introdução**
+
+O Anuário Estatístico de 2020 expressa o resultado de uma ação de vanguarda, levada a efeito por uma administração competente e comprometida com a comunidade a que serve. Importante, não só como fonte de pesquisa e de informações, o Anuário é de extrema utilidade para facilitar o acesso a dados, por vezes
+difíceis de compilar, revelando-se, assim, um instrumento prático e eficiente.    
+
+
+O Anuário Estatístico de Trânsito do Detran-PA é um catálogo que engloba dados estatísticos sobre Acidentes de Trânsito, Frota de Veículos, Habilitação, Infrações e outros indicadores. O documento é elaborado anualmente, com informações divididas por municípios, e foi criado para ser uma referência e produzir ações que promovam a qualidade de vida dos cidadãos, condutores e pedestres. Com o Anuário, o Detran-PA objetiva transmitir o real cenário da realidade do trânsito Paraense e nortear as ações que tem como foco a redução da gravidade dos acidentes, além de ser uma ferramenta de pesquisa e estudo sobre trânsito e mobilidade urbana no Estado do Pará. O documento também está alinhado com o do Registro Nacional de Acidentes e Estatística de Trânsito (Renaest), vinculado ao Denatran. O Renaest disponibiliza informações estatísticas sobre os acidentes de trânsito em todo país, conforme a Resolução n° 808 de 2020.
+
+
+# Justificativa e Importância do Anuário
+
+O controle e análise de estatísticas são fundamentais em qualquer área de atividade. São eles que permitem identificar os principais problemas, definir prioridades e avaliar o resultado dos trabalhos executados. 
+
+No Brasil, valoriza-se pouco a coleta, a tabulação, o processamento, a análise e a utilização de dados. Dá-se pouca importância a esses aspectos por falta de tradição e, também, muitas vezes por desconhecimento dessas informações para a orientação de trabalhos. O alto custo das pesquisas e a necessidade de recursos humanos e materiais contribuem para esta deficiência. 
+
+Na área do trânsito não é diferente. Entretanto, o Código de Trânsito Brasileiro exige que seja feito o controle e análise de estatísticas e o município deve atender esta exigência, percebendo sua importância. Os dados de acidentes são fundamentais para orientar um programa de tratamento de pontos críticos, assim como, aferir os resultados das intervenções realizadas nas vias, elaborando-se estudos antes e depois das intervenções e projetos implantados. Dessa forma, é possível a correção eventual de falhas nas implantações realizadas, assim como, a aferição dos benefícios obtidos em função do custo das intervenções.
+
+Para reverter essa situação, dados confiáveis e precisos são necessários para aumentar a consciência sobre a magnitude real dos acidentes de trânsito e também para convencer os tomadores de decisão de que há uma demanda real e urgente por ações eficazes.
+
+Além disso, dados confiáveis e precisos também são necessários para identificar corretamente problemas, fatores de risco e áreas prioritárias, e para formular estratégias, definir metas e monitorar o desempenho. O diagnóstico e a gestão dos principais problemas relacionados a acidentes de trânsito devem ser continuados e baseados em dados reais, de maneira que ações adequadas sejam tomadas e os recursos sejam alocados apropriadamente. Sem isso, é impossível haver uma redução significativa e sustentável tanto do nível de exposição da população ao risco de acidentes quanto da gravidade dos mesmos.
+
+
+## Objetivos
+### Objetivo Geral
+
+O objetivo deste anuário é ser catálogo de informações estatísticas, pondo-as ao alcance da compreensão das entidades públicas e privadas direta ou indiretamente ligadas ao trânsito, subsidiar o planejamento e avaliação das ações voltadas a redução de acidentes de trânsito no âmbito do Pará.
+
+### Objetivos Específicos
+
+- Estabelecer uma sistemática para comunicação, registro, controle, consulta,
+acompanhamento e implantação de uma base regional de Estatísticas de Trânsito,
+- Subsidiar o desenvolvimento de estudos, pesquisas e ações que visem à melhoria da segurança viária no Pará;
+
+# **Metodologia** 
+
+
+## Caracterização da Area de Estudo
+
+A abrangência geográfia dos dados refrentes ao Anuário Estatístico, contempla as informações coletadas dos boletins de ocorrências policiais, sobre acidentes de trânsito em + 570 delegacias, distraibuídos em 144 municípios do Estado do Pará
+
+
+## Fonte de Coleta de Dados
+
+A coleta dos dados para este estudo foi feita junto às fontes secundárias oriundas do Sistema Integrado de Segurança Pública (SISP), fornecidas pelo Departamento Estadual de Trânsito (DETRAN), através da Gerência de Análise e Estatística de Acidente (GAETRA) vinculado a Coordenadoria do Núcleo de Planejamento (CNP), que por meio do SISP consegue ter acesso às informações referentes à ocorrência de acidentes de trânsito no interior do Estado e na capital formando um banco de dados com informações sobre tipo de acidentes de trânsito, o(s) veículo(s) e a(s) vítima(s) envolvida(s) no(s) acidente(s) entre outras. Sendo que estas informações provêm das delegacias de polícia civil das cidades que estão conectadas on-line ao sistema.
+
+
+## Tratamento dos Dados  
+
+Imediatamente, após a transferência dos dados, estes são submetidos a um filtro, em
+que a maioria das ocorrências é selecionada para a crítica geral com, pelo menos, um problema de consistência interna.
+
+
+## Disseminação dos Dados 
+
+A disseminação de dados é feita pela divulgação de anuários, boletins e estudos para órgãos
+interessados nas políticas de trânsito, além da disponibilização das principais informações no sítio eletrônico
+do Detran-PA.
+
+
+## Revisão Final
+
+Após a conclusão de todas as etapas de crítica citadas anteriormente, são geradas algumas tabelas com o cruzamento das principais variáveis, para verificação final da consistência dos dados. Além disso, é feita uma crítica para a verificação de ocorrências duplicadas selecionando-se as placas de veículos envolvidos em acidentes que são repetidas e comparando-se o local, horário e endereço das ocorrências suspeitas. As ocorrências repetidas são excluídas do banco. 
+
+
+## **RENAEST**
+
+O Governo Federal lançou em 2018 a lei do PNATRANS, com objetivo de reduzir os óbitos no trânsito. A Lei nº 13.614/2018 criou **Plano Nacional de Redução de Mortes e Lesões no Trânsito (PNATRANS)**, acrescentando o artigo 326-A ao Código de Trânsito Brasileiro (CTB), e propôs um novo desafio para a gestão de trânsito no Brasil e para os orgãos integrados do Sistema Nacional de Trânsito (SNT).
+
+
+
+# **Conceitos e Definições Básicas** {.tabset .tabset-fade}
+
+A seguir são descritos os principais termos técnicos retirados da ABNT e que são utilizados na elaboração deste anuário:
+
+## **Acidentes de Trânsito**
+
+- **Atropelamento**: Acidente em que o(s) pedestre(s) ou animal(is) sofre(m) o impacto de um veículo, estando pelo menos uma das partes em movimento.
+
+- **Abalroamento**: Acidente em que um veículo é colhido lateralmente por outro veículo, também em movimento.
+
+- **Capotamento**: Acidente em que o veículo gira sobre si mesmo, em qualquer sentido, chegando a ficar com as rodas para cima, imobilizando-se em qualquer posição.
+
+- **Choque com Objeto Fixo**: Acidente em que há impacto de um veículo contra qualquer objeto fixo ou móvel, mas sem movimento.
+
+- **Colisão entre Veículos**: Acidente em que um veículo em movimento sofre o impacto de outro veículo, também em movimento.
+
+- **Queda de Ônibus**: Acidente em que há impacto em razão de queda livre dentro do ônibus, ou queda de pessoas ou cargas por ela transportadas.
+
+- **Queda de Motocicleta**: Acidente em que há impacto em razão de queda livre da motocicleta, ou queda de pessoas.
+
+- **Tombamento**: Acidente em que o veículo sai de sua posição normal, imobilizando-se sobre uma de suas laterais, sua frente ou sua traseira.
+
+
+## **Pedestre**
+
+- Toda pessoa a pé que esteja utilizando-se de vias terrestres ou áreas abertas ao público, desde que não esteja em veículo a motor, trem, bonde, transporte animal ou outro veículo, ou sobre bicicleta ou sobre animal.
+
+## **Condutor**
+
+- Toda pessoa que conduza um veículo automotor, ou de outro tipo, incluindo os ciclos, ou que guie por uma via, cabeças de gado isoladas, rebanho, bando ou manadas, ou animais de tiro, carga ou sela. 
+
+
+## **Vítimas**
+
+- **Fatal**: É qualquer acidente de trânsito em que ocorra a Morte de, pelo menos uma pessoa, até 30 dias após a data do acidente.
+
+- **Não Fatal**: É qualquer acidente de trânsito em que uma ou mais pessoas sofrem lesões, não ocasionando a morte de nenhuma delas até 30 dias após o acidente.
+
+
+## **Vias**
+
+- **Rodovia**: inclui todas as rodovias federais (BR), as rodovias do Pará (PA's) e Estradas Vicinais (VC).
+
+- **Urbana**: Todas as vias do Pará, excluindo as Rodovias
+
+
+## **Turnos**
+
+- **Madrugada**: $00:01 |--- 05:59$
+- **Manhã**: $06:00 |--- 11:59$
+- **Tarde**: $12:00 |--- 17:59$
+- **Noite**: $18:01 |--- 23:59$
+
+
+## **Taxa de Internação**
+
+
+- A taxa de internação hospitalar é o número de casos de internação pagas no Sistema Ùnico de Saúde por acidentes de trânsito, por 10 mil habitantes, na população residente do espaço geográfico, no ano considerado.
+
+$$ TIH_{AT} = \frac{Nº \ de \ Internações }{ Nº \ de \ habitantes} \times \  10 \  mil \ habitantes  $$
+
+- A internação da vítima de Acidente de Trânsito retrata a gravidade do evento e constitui parte considerável dos custos decorrentes desse agravo (SOARES e BARROS, 2006).
+
+
+## **Taxa de Òbito/habitantes**
+
+
+- A taxa de mortalidade por acidentes de trânsito é o número de óbitos por acidentes de transporte terreste, por 100 mil habitantes, na população residente do espaço geográfico, no ano considerado.
+
+
+$$ Taxa \ de \ Óbito_{habitantes} = \frac{Nº \ de \ Óbitos }{ Nº \ de \ habitantes}  \times  100 \  mil \ habitantes  $$
+
+
+## **Taxa de Òbito/Veículos**
+
+- A taxa de mortalidade por veículos é o número de óbitos por acidentes de transporte terreste, por 10 mil Veículos, na frora veicular registrada do espaço geográfico, no ano considerado.
+
+
+$$ Taxa \ de \ Óbito_{veiculos} = \frac{Nº \ de \ Óbitos }{ Nº \ de \ Veículos}  \times  \ 10 \ mil \ veículos$$
+
+
+
+
+```{r Pacotes3, include=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+library(ggplot2)    
+library(plotly) 
+library(ggpubr) 
+library(gridExtra)
+library(ggthemes)
+library(GGally)
+library(kableExtra)
+library(gtsummary)
+library(xtable)
+library(PerformanceAnalytics)
+library(readr)
+```
+
+
+
+
+
+
+
+
+# **Estatísticas de Veículos** {.tabset .tabset-fade}
+
+## **Tipos**
+
+**Tabela 01**. Frota de Veículos Registrados por Tipo, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **Tipos**             |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | 
+ | :------------:        | :-----------: |:------------: | :------------: | :------------: |:------------: |
+ | `Automóvel`           | 546.160       | 569.664       | 597.649        | 629.297        | 664.142       | 
+ | `Caminhão`            | 66.071        | 68.481        | 70.715         | 73.428         | 76.125        | 
+ | `Motocicleta`         | 976.500       | 1.027.387     | 1.077.286      | 1.130.123      | 1.180.497     |  
+ | `Caminhonete`         | 179.357       | 190.066       | 202.645        | 215.415        | 215.415       |     
+ | `ônibus`              | 23.946        | 24.428        | 25.094         | 268.884        | 26.884        |        
+ | `Reboque`             | 35.325        | 37.830        | 40.479         | 48.053         | 48.053        |    
+ | `Outros`              | 261           | 319           | 279            | 281            | 281           | 
+ | `TOTAL GERAL`         | 1.827.620     | 1.918.175     | 2.014.147      | 2.211.397      | 2.211.397     | 
+
+## **Categoria**
+
+**Tabela 02**. Frota de Veículos Registrados por Categoria, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **Categorias**             |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        | 
+ | :------------:             | :-----------: | :------------: | :------------: | :------------: | :------------: | 
+ | `Particular`               |               |                |                |                |                |                  
+ | `Aluguel`                  |               |                |                |                |                |                  
+ | `Táxi`                     |               |                |                |                |                |                    
+ | `Oficial`                  |               |                |                |                |                |                       
+ | `Transporte`               |               |                |                |                |                |                         
+ | `Aprendizagem`             |               |                |                |                |                |                     
+ | `Outros`                   |               |                |                |                |                |                  
+ | `TOTAL GERAL`              |               |                |                |                |                |                  
+
+## **Combustivel**
+
+**Tabela 03**. Frota de Veículos Registrados por Tipo de Combustível, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **Combustível**            |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        |
+ | :------------:             | :-----------: | :------------: | :------------: | :------------: | :------------: | 
+ | `Alcool`                   |               |                |                |                |                |                  
+ | `Diesel`                   |               |                |                |                |                |                  
+ | `Gasolina`                 |               |                |                |                |                |                  
+ | `Alcool/Gasolina`          |               |                |                |                |                |                      
+ | `Outros`                   |               |                |                |                |                |                        
+ | `TOTAL GERAL`              |               |                |                |                |                |                  
+
+## **Especie**
+
+**Tabela 04**. Frota de Veículos Registrados por Espécie, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ |  **Espécie**               |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        | 
+ | :------------:             | :-----------: | :------------: | :------------: | :------------: | :------------: | 
+ | `Carga`                    |               |                |                |                |                |                  
+ | `Coleção`                  |               |                |                |                |                |                  
+ | `Corrida`                  |               |                |                |                |                |                    
+ | `Especial`                 |               |                |                |                |                |                       
+ | `Passageiro`               |               |                |                |                |                |                         
+ | `Tração`                   |               |                |                |                |                |                   
+ | `TOTAL GERAL`              |               |                |                |                |                |                  
+
+## **Fabricação**
+
+**Tabela 05**. Frota de Veículos Registrados por Ano de fabricação, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ |  **Ano de Fabricação**     |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        | 
+ | :------------:             | :-----------: | :------------: | :------------: | :------------: | :------------: | 
+ | `0 |--- 1 Ano`             |               |                |                |                |                |                  
+ | `2 |--- 5 Anos`            |               |                |                |                |                |                  
+ | `6 |--- 10 Anos`           |               |                |                |                |                |                    
+ | `11 |--- 15 Anos`          |               |                |                |                |                |                       
+ | `15 ou +`                  |               |                |                |                |                |                   
+ | `TOTAL GERAL`              |               |                |                |                |                |                  
+
+
+## **Serviços de Veículos**
+
+**Tabela 06**. Frota de Veículos Registrados por Tipos de Serviços, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ |  **Tipos de Serviços**     |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        | 
+ | :------------:             | :-----------: | :------------: | :------------: | :------------: | :------------: | 
+ | `Primeiro Emplacamento`    |               |                |                | 105.085        |                |                  
+ | `Mudança de Jurisdição`    |               |                |                | 59.184         |                |                  
+ | `Transferência`            |               |                |                |                |                |                    
+ | `Alteração de Dados`       |               |                |                |                |                |                       
+ | `TOTAL GERAL`              |               |                |                |                |                |                  
+
+
+
+
+
+# **Estatísticas de Infração de Trânsito** {.tabset .tabset-fade}
+
+## **Gravidade**
+
+**Tabela 01**. Infrações de Trânsito Registradas, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **INDICADORES**           |     $2016$    |    $2017$       |    $2018$       |     $2019$      |   $2020$        |
+ | :------------:            | :-----------: | :------------:  | :------------:  | :------------:  | :------------:  |
+ | `Média`                   |               | 25.199          |  46.487         | 32.009          |                 |
+ | `Leve`                    |               | 7.245           |  2.854          | 3.314           |                 |
+ | `Grave`                   |               | 10.715          |  24.779         | 24.217          |                 |   
+ | `Gravíssima`              |               | 26.620          |  14.941         | 11.061          |                 |   
+ | `TOTAL GERAL`             |               |                 |                 |                 |                 |
+
+
+## **TOP 10 + Infrações**
+
+**Tabela 02**. Infrações de Trânsito Registradas, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+| **TOP 10 INFRAÇÕES**                                            |     $2016$    |    $2017$      |    $2018$       |     $2019$      |
+|:------------:                                                   | :-----------: |:------------:  | :------------:  | :------------:  |
+| `Transitar em Velocidade Superior a Maxima Permitida até 20`    |               |                |                 | 282.267         | 
+| `Avançar Sinal vermelho Parada Obrigatória`                     |               |                |                 | 113.229         |
+| `Transitar Velocidade Superior Permitida mais de 20 ate 50`     |               |                |                 | 44.635          |
+| `Transitar na Pista da Dir Reg Cir Excl Determ Veículo`         |               |                |                 | 15.296          |
+| `Estacionar ao Lado ou Sobre Marcas de Canilização`             |               |                |                 | 12.632          |
+| `Conduzir Motoc/Moton/ciclo c/ Capacete s/ Vis/oculos Proteção` |               |                |                 | 11.764          |
+| `Estacionar em Fila Dupla`                                      |               |                |                 |  7.940          |
+| `Estacinar em Local/Horário Proibido Especie P/ Sinalização`    |               |                |                 |  7.418          |
+| `Conduzir Mot/Moton/Ciclo Transp. Passag. Fora do Assento`      |               |                |                 |  6.332          |
+| `COND VC S/ REG. E DEVIDAM. LIC`                                |               |                |                 |  5.321          |
+
+
+# **Indicadores de Acidentalidade** {.tabset .tabset-fade}
+
+## **Taxas**
+
+**Tabela 01**. Taxas de Acidentalidade, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **Taxas**                  |     $2016$    |    $2017$     |    $2018$      |     $2019$     |
+ |:------------:              | :-----------: |:------------: | :------------: | :------------: |
+ | `Taxa de Motorização`      | 22.00         | 22.93         |  23.66         | 24.63          | 
+ | `Taxa de Crescimento`      | 4.95          | 5.00          |  5.19          | 5.13           |
+ | `Taxa de òbito/Habitantes` | 77.33         | 74.26         |  78.97         | 79.45          |    
+ | `Taxa de Òbito/Veículos`   | 17.33         | 17.81         |  17.40         | 15.87          |     
+
+
+## **Indicadores**
+
+**Tabela 02**. Indicadores de Acidentalidade, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **INDICADORES**  |     $2016$    |    $2017$     |    $2018$      |     $2019$     |
+ |:------------:    | :-----------: |:------------: | :------------: | :------------: |
+ | `Indicador 1`    |               |               |                |                | 
+ | `Indicador 2`    |               |               |                |                |
+ | `Indicador 3`    |               |               |                |                |    
+ | `Indicador 4`    |               |               |                |                |     
+
+
+
+# **Estatísticas de Condutores** {.tabset .tabset-fade}
+
+## **Categoria da CNH**
+
+**Tabela 01**. Condutores Registrados por Categoria, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **Categoria da CNH**  |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | 
+ | :------------:        | :-----------: |:------------: | :------------: | :------------: |:------------: |
+ | `A`                   | 33.068        | 33.447        | 33.653         | 35.680         |               | 
+ | `AB`                  | 644.462       | 688.479       | 701.568        | 715.472        |               | 
+ | `AC`                  | 20.827        | 19.386        | 172.977        | 16.966         |               |  
+ | `AD`                  | 139.991       | 144.407       | 146.700        | 149.344        |               |     
+ | `AE`                  | 31.390        | 33.473        | 35.353         | 36.815         |               |        
+ | `B`                   | 349.643       | 361.766       | 370.886        | 376.787        |               |    
+ | `C`                   | 18.786        | 17.154        | 15.806         | 14.832         |               | 
+ | `D`                   | 46.053        | 43.995        | 42.172         | 40.864         |               | 
+ | `E`                   | 8.356         | 8.278         | 8.254          | 8.267          |               | 
+ | `TOTAL GERAL`         | 1.292.576     | 1.350.385     | 1.372.399      | 1.395.027      |               | 
+
+## **Idade**
+
+**Tabela 02**. Condutores Registrados por Idade, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **Idade**      |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | 
+ | :------------:        | :-----------: |:------------: | :------------: | :------------: |:------------: |
+ | `18 |--- 24`          | 110.742       | 109.001       | 98.859         | 84.363         |               | 
+ | `25 |--- 34`          | 377.575       | 381.533       | 377.469        | 367.867        |               | 
+ | `35 |--- 44`          | 365.322       | 388.145       | 400.591        | 414.033        |               |  
+ | `45 |--- 54`          | 277.366       | 241.023       | 249.057        | 262.949        |               |     
+ | `55 |--- 64`          | 131.731       | 141.270       | 147.857        | 156.949        |               |        
+ | ` 65 ou +`            | 79.857        | 89.439        | 98.581         | 109.166        |               |    
+ | `TOTAL GERAL`         | 1.342.593     | 1.350.411     | 1.372.414      | 1.395.027      |               | 
+
+
+## **Sexo**
+
+**Tabela 03**. Condutores Registrados por Sexo, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **Sexo**              |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | 
+ | :------------:        | :-----------: |:------------: | :------------: | :------------: |:------------: |
+ | `Masculino`           | 960.894       | 997.319       | 1.005.248      | 1.019.407      |               | 
+ | `Feminino`            | 169.754       | 353.092       | 367.166        | 375.620        |               | 
+ | `TOTAL GERAL`         | 1.130.648     | 1.350.411     | 1.372.414      | 1.395.027      |               | 
+
+
+## **Serviços de CNH**
+
+**Tabela 04**. Condutores Registrados por Tipos de Serviços, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ |  **Tipos de Serviços de CNH** |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        | 
+ | :------------:                | :-----------: | :------------: | :------------: | :------------: | :------------: | 
+ | `1º Habilitação`              |               |                |                |                |                |                  
+ | `2º Via`    |                 |               |                |                |                |                |              
+ | `Renovação`                   |               |                |                |                |                |                    
+ | `TOTAL GERAL`                 |               |                |                |                |                |                  
+
+
+
+
+
+# Referências Bibliográficas
+
+
+- Soares DFPP, Barros MBA. Fatores associados ao risco de internação por acidentes de trânsito no
+Município de Maringá-PR. Rev Bras Epidemiol. 2006 jun;9(2):193-205.
+
+
+# Créditos
+
+**DETRAN-PA 2021**
+
+**<https://www.detran.pa.gov.br>**
+
+
+
+
+
+
+
