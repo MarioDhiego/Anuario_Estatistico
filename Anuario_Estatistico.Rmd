@@ -789,6 +789,7 @@ library(tmaptools)
 library(stars)
 library(maps)
 library(tmap)
+library(terra)
 library(gridExtra)
 library(raster)
 library(ggsn) 
@@ -801,18 +802,22 @@ library(covid19br)
 # Carregando o arquivo
 MAPARS=shapefile("C:/Users/marioDhiego/Documents/Anuario_Estatistico/Anuario_Estatistico/PA_Municipios_2020.shp")
 
+#dir.create("./data")
 
 
 tmap_mode("plot")
-tm_shape(MAPARS)+
+
+tm_shape(MAPARS, bbox= NULL)+
+  tm_polygons(col="lightgrey")+
+  tm_text('name_muni')+
   tm_fill()+
   tm_borders(col = "blue")+
-  tm_layout(title = "Frota Registrada")+
   tm_dots()+
-  tm_polygons()+
-  tm_style("col_blind")+
   tm_compass(type="8star", position=c("right", "top"), show.labels = 1,size=2.5)+
+  tm_grid()+
   tm_scale_bar(breaks = c(0, 100, 200), text.size = 1)+
+  tm_layout(main.title = "Frota Registrada", main.title.position = 'center')+
+  tm_style("classic")+
   tm_bubbles()+
   tmap_mode("view")
 
@@ -822,7 +827,13 @@ plot(MAPARS[MAPARS$NM_MUN=='Parauapebas',],
     border=gray(0.5), 
     lwd=.5)
 
-
+# tmap_arrange(m1,m2)
+# tmap_save(filename = "Mapa_Para.png",
+#            width=20,
+#            height=20,
+#            units="cm",
+#            dpi=300)
+ 
 ```
 
 
