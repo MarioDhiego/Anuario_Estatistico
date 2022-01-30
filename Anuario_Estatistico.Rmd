@@ -736,6 +736,7 @@ library(formattable)
 library(rhandsontable)
 library(DT)
 library(downloadthis)
+
 setwd("C:/Users/mario Dhiego/Documents/Anuario_Estatistico/Anuario_Estatistico")
 Previsao = read.csv("Previsao.csv",header=TRUE,sep=";")
 datatable(Previsao, 
@@ -782,6 +783,7 @@ library(colorspace)
 library(maptools)
 library(curl)
 library(ggpubr)
+library(geobr)
 library(devtools)
 library(electionsBR) # pacote com base de dados eleiÃ§Ãµes
 library(data.table)
@@ -798,34 +800,132 @@ library(covid19br)
 
 
 
+BASE_PA <- read_municipality(code_muni = "PA", year = 2020)
+plot(BASE_PA)
+
+
+setwd("C:/Users/mario Dhiego/Documents/Anuario_Estatistico/Anuario_Estatistico")
+
+COVID19_MAR_PA = read.csv("COVID19_MAR_PA.csv",header=TRUE,sep=",")
+
+ggplot(BASE_PA)+
+  geom_sf(fill= "#2D3E50", color= "#FEBF57", 
+          size=0.15, show.legend = FALSE)
+
+
+
+casosPA <- COVID19_MAR_PA
+linhas <- c(55,146)
+casosPA <- casosPA[-linhas,]
+
+colunas <- c(3,4) 
+BASE_PA <- BASE_PA[,-colunas]
+
+colunas <- c(1,2,4,7)
+casosPA <- casosPA[,-colunas] 
+
+
+
+PA_Casos_Covid <- merge(BASE_PA, casosPA, by.x= "code_muni", by.y="city_ibge_code")
+
+Mapa_PA <- leaflet(PA_Casos_Covid) %>% 
+  addTiles()
+Mapa_PA %>% addPolygons()
+
+Mapa_PA %>% addPolygons(
+  weight = 1.5,
+  opacity = 0.5,
+  color = "blue",
+  dashArray = 1,
+  smoothFactor = 1.5,
+  fillOpacity = 0,)
+
+Categoria_Legenda <- c(0,10,30,50,100,Inf)
+pal <- colorBin("YlOrRd", domain = PA_Casos_Covid$fatal, bins = Categoria_Legenda)
+
+Mapa_PA %>% addPolygons(
+  fillColor = ~pal(fatal),
+  weight = 2.0,
+  opacity = 1.0,
+  color = "white",
+  dashArray = 1,
+  smoothFactor = 1.5,
+  fillOpacity = 0.7,)
+
+Mapa_PA %>% addPolygons(
+  fillColor = ~pal(fatal),
+  weight = 1.5,
+  opacity = 1,
+  color = "white",
+  dashArray = "1",
+  fillOpacity = 0.7,
+  highlight = highlightOptions(
+    weight = 5,
+    color = "#666",
+    dashArray = "",
+    fillOpacity = 0.7,
+    smoothFactor = 2.5,
+    bringToFront = TRUE))
+
+label1 <- sprintf(
+  "<strong>%s</strong></br>%g Acidentes</br>%g Vitima Fatal",
+  PA_Casos_Covid$name_muni, PA_Casos_Covid$confirmed, PA_Casos_Covid$fatal) %>% lapply(htmltools::HTML)
+
+# Mapa Customizado
+
+Mapa_PA %>% addPolygons(
+  fillColor = ~pal(fatal),
+  weight =2,
+  opacity =1,
+  color ="white",
+  dashArray ="1",
+  smoothFactor = 1.5,
+  fillOpacity =0.7,
+  highlight = highlightOptions(
+    weight = 5,
+    color = "#666",
+    dashArray ="",
+    fillOpacity =0.7,
+    bringToFront =TRUE),
+  label = label1,
+  labelOptions = labelOptions(
+    style = list("font-weight" = "normal", padding = "3px 8px"),
+    textsize = "15px",
+    direction= "auto"
+  )) %>% addLegend(pal= pal,
+                   values = ~deaths,
+                   opacity = 0.5,
+                   title = "Vitma Fatal no Transito",
+                   position= "bottomright")
+
 
 # Carregando o arquivo
-MAPARS=shapefile("C:/Users/marioDhiego/Documents/Anuario_Estatistico/Anuario_Estatistico/PA_Municipios_2020.shp")
+#MAPARS=shapefile("C:/Users/marioDhiego/Documents/Anuario_Estatistico/Anuario_Estatistico/PA_Municipios_2020.shp")
 
 #dir.create("./data")
 
 
-tmap_mode("plot")
+#tmap_mode("plot")
 
-tm_shape(MAPARS, bbox= NULL)+
-  tm_polygons(col="lightgrey")+
-  tm_text('name_muni')+
-  tm_fill()+
-  tm_borders(col = "blue")+
-  tm_dots()+
-  tm_compass(type="8star", position=c("right", "top"), show.labels = 1,size=2.5)+
-  tm_grid()+
-  tm_scale_bar(breaks = c(0, 100, 200), text.size = 1)+
-  tm_layout(main.title = "Frota Registrada", main.title.position = 'center')+
-  tm_style("classic")+
-  tm_bubbles()+
-  tmap_mode("view")
+#tm_shape(MAPARS, bbox= NULL)+
+#  tm_polygons(col="lightgrey")+
+#  tm_text('name_muni')+
+#  tm_fill()+
+#  tm_borders(col = "blue")+
+#  tm_dots()+
+#  tm_compass(type="8star", position=c("right", "top"), show.labels = #1,size=2.5)+
+#  tm_grid()+
+#  tm_scale_bar(breaks = c(0, 100, 200), text.size = 1)+
+#  tm_layout(main.title = "Frota Registrada", main.title.position = 'center')+
+#  tm_style("classic")+
+#  tm_bubbles()+
+#  tmap_mode("view")
 
-plot(MAPARS[MAPARS$NM_MUN=='Parauapebas',], 
-    axes="TRUE",  
-    main="Mapa do município Parauapebas - PA",
-    border=gray(0.5), 
-    lwd=.5)
+#plot(MAPARS[MAPARS$NM_MUN=='Parauapebas',], 
+#    axes="TRUE",  
+#    main="Mapa do município Parauapebas - PA",
+#    border=gray(0.5), 
+#    lwd=.5)
 
 # tmap_arrange(m1,m2)
 # tmap_save(filename = "Mapa_Para.png",
@@ -1263,6 +1363,7 @@ library(kableExtra)
 library(formattable)
 library(DT)
 library(downloadthis)
+
 setwd("C:/Users/mario Dhiego/Documents/Anuario_Estatistico/Anuario_Estatistico")
 acidente1 = read.csv("acidente1.csv",header=TRUE,sep=";")
 datatable(acidente1, 
