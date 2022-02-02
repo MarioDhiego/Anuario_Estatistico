@@ -852,51 +852,7 @@ Mapa_PA %>% addPolygons(
   smoothFactor = 1.5,
   fillOpacity = 0.7,)
 
-Mapa_PA %>% addPolygons(
-  fillColor = ~pal(fatal),
-  weight = 1.5,
-  opacity = 1,
-  color = "white",
-  dashArray = "1",
-  fillOpacity = 0.7,
-  highlight = highlightOptions(
-    weight = 5,
-    color = "#666",
-    dashArray = "",
-    fillOpacity = 0.7,
-    smoothFactor = 2.5,
-    bringToFront = TRUE))
 
-label1 <- sprintf(
-  "<strong>%s</strong></br>%g Acidentes</br>%g Vitima Fatal",
-  PA_Casos_Covid$name_muni, PA_Casos_Covid$confirmed, PA_Casos_Covid$fatal) %>% lapply(htmltools::HTML)
-
-# Mapa Customizado
-
-Mapa_PA %>% addPolygons(
-  fillColor = ~pal(fatal),
-  weight =2,
-  opacity =1,
-  color ="white",
-  dashArray ="1",
-  smoothFactor = 1.5,
-  fillOpacity =0.7,
-  highlight = highlightOptions(
-    weight = 5,
-    color = "#666",
-    dashArray ="",
-    fillOpacity =0.7,
-    bringToFront =TRUE),
-  label = label1,
-  labelOptions = labelOptions(
-    style = list("font-weight" = "normal", padding = "3px 8px"),
-    textsize = "15px",
-    direction= "auto"
-  )) %>% addLegend(pal= pal,
-                   values = ~deaths,
-                   opacity = 0.5,
-                   title = "Vitma Fatal no Transito",
-                   position= "bottomright")
 
 
 # Carregando o arquivo
