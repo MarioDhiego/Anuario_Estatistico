@@ -1,0 +1,664 @@
+---
+title: "REPORT - COMISSÃO DE ANÁLISE DE DADOS"
+author: "Portaria nº 1513/2021/DG/DETRAN-PA"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  pdf_document:
+    df_print: kable
+    highlight: tango
+    latex_engine: xelatex
+    fig_caption: yes
+    keep_tex: no
+    number_sections: yes
+    toc: no
+    toc_depth: 4
+    fig_width: 7
+    fig_height: 6
+  fontsize: 12 pt
+  word_document:
+    toc: no
+    toc_depth: '4'
+abstract: "A Assembléia Geral da Organização das Nações Unidas(ONU), por meio da Resolução A/RES/74/299, de 31 de agosto de 2020, lançou a Década de Ação pela Segurança Viária
+  2021-2030, com o objetivo de reduzir em pelo menos 50% de vítimas fatais e feridos
+  graves no trânsito, bem como solicita aos Estados-Membros que continuem adotando
+  medidas até 2030 para alcançar as metas dos Objetivos de desenvolvimento Sustentável
+  relacionados à segurança viária, em especial a meta 3.6. Atento ao assunto, o Departamento
+  de Trânsito do Estado do Pará - DETRAN/PA, com sua missão fundamentada nos princípios
+  da Política Nacional de Trânsito - PNT (Resolução CONTRAN nº 514, de 18 de dezembro
+  de 2014), apresenta, neste documento, o processo de gestão de integração de múltiplas
+  bases de dados (pareamento) sobre vítimas fatais por acidente de trânsito, o qual
+  foi elaborado com base em dados coletados pela Comissão de Análise de Dados, instituída
+  por meio da Deliberação nº001/2020/ CETRAN/PA, publicada no dia 21 de agosto, e
+  a Portaria Nº 1513/2021/DG/DETRAN/PA, publicada no dia 25 de maio no Diário Oficial
+  in Brazil do Detran-Pa**, aprovado pelo Fundo das Nações Unidas para a Segurança
+  Viária (United Nations Road Safety Fund) e superviozionado pela **Comissão Econômica
+  das Nações Unidas para América Latina e caribe (CEPAL)**, e fornecidos pelos Boletins
+  de Ocorrência da Polícia Civil-PA, Boletins de Acidentes Rodoviários pelo Batalhão
+  Rodoviário da Polícia Militar(PM-PA), os laudos Periciais do Instituto Médico legal
+  (IML-PA), cs dados das declarações de òbitos obtidas a partir do Sistema de Informações
+  de Mortalidade (SIM), disponibilizados pela (SESPA-PA), e de hospitalização apartir
+  do Sistema de Informações Hospitalares do Sistema Ùnico de Saúde (SIH/SUS) pelo
+  Hospital Metropolitano de Urgência e Emergência(HMUE). O processo de integração
+  de dados foi realizado junto aos 144 municípios que compõem o Estado do Pará referentes
+  ao período de 2019 a 2020, e analisados 231 registros de óbitos por acidentes de
+  trânsito. Como Resultados a integração de dados de múltiplas instituições, criação
+  de uma Lista única de Vítimas Fatais (LUVF) de trânsito, feito uma busca ativa nos
+  dados policiais com homônimos e reclassificação de acidentes graves ou fatais. Foi
+  Criado uma versão web com dasboard interativos, utilizando um processo de Extração-Transformação-Carga
+  (ETL) via **Pentaho** um software de código aberto. Houve um incremento médio de
+  35% em relação ao total de vítimas comtabilizadas antes da utilização do pareamento.
+  O estudo revelou número absoluto de óbito mais próximo do real, e identificou grupos
+  vulneráveis.Os resultados sugerem que o processo de integração de dados fornece
+  bons resultados e pode ser adotado por outras instituições que necessitam de informações
+  confiáveis sobre acidentes do trânsito para subisidiar o planejamento, monitoramento
+  e avaliação das ações de segurança viária."
+  do Estado(DOE), considerando o Projeto: **Strengthening Road Traffic Enforcement
+keywords: pandoc, r markdown, knitr
+---
+
+
+
+\newpage
+
+
+# **APRESENTAÇÃO**
+
+O Departamento de Trânsito do Estado do Pará obteve o projeto Strengthening Road Traffic Enforcement in Brazil aprovado e financiado pela (United Road Safety Fund), com duração de 12 meses, se constituindo o único selecionado do Brasil, que somado as propostas de alguns outros países, formam o conjunto de projetos nacionais administrados pelo Fundo e coordenado e supervisionados por diversas Agências e Comissões Regionais das Nações Unidas.
+
+Concomitantemente, o projeto Brasileiro é supervisionado pela **Comissão Econômica das Nações Unidas para América Latina e caribe (CEPAL)**, coordenado e implementado pelo DETRAN-PA em parceria com CETRAN-PA, e tem como objetivo contribuir para a redução de mortes e lesões no trânsito através das atividades de Educação, Engenharia e Fiscalização em nível estadual.
+
+Nesse sentido, foi instituída a Comissão de Análise de Dados via por meio da Deliberação nº001/2020/ CETRAN/PA, publicada no dia 21 de agosto, e a Portaria Nº 1513/2021/DG/DETRAN/PA, publicada no dia 25 de maio no Diário Oficial do Estado(DOE), considerando o Projeto: Strengthening Road Traffic Enforcement in Brazil do Detran-Pa, aprovado pelo Fundo das Nações Unidas para a Segurança Viária (United Nations Road Safety Fund) para analisar os dados de mortalidade e morbidade no trânsito no Estado do Pará, visando a elaboração com critérios técnicos de sugestões ou direcionamentos para atividades finais das Coordenadorias de Educação, Engenharia e Fiscalização.
+
+Destarte, esta comissão é composta por representantes civis  e militares, de orgãos públicos e entidades da sociedade civil organizada, como Departamento de Trânsito (DETRAN), Polícia Rodoviária Estadual, Bombeiro Militar, Instituto Médico Legal(IML), Serviço de Atendimento Móvel de Urgência(SAMU), Hospital Metropolitano de Urgência e Emergência, SESPA, SEGUP e Polícia Civil. Todos com um único objetivo: salvar vidas.
+
+
+\newpage
+
+# **COMISSÃO DE ANÁLISE DE DADOS**
+A comissão e composta por membros dos seguintes orgãos:
+
+**1)** COORDENAÇÃO GERAL DO PROJETO;
+
+- Luis Otávio Maciel Miranda (Assessor Técnico/Ministério da Saúde)
+- Marcelo Lima Guedes (Diretor Geral/DETRAN-PA)
+
+**2)** Departamento de Trânsito do Estado do Pará;
+
+- Mário Diego Rocha Valente (Analista de Trânsito)
+- Kleber Bezerra Salim (Coordenador de Planejamento)
+- Cristovão Cunha Simões da Mota (Assistente de Trânsito)
+
+**3)** Secretaria de Segurança Pública e Defesa Social;
+
+- Wando Dias Miranda (Assessor)
+- Edu Rosa Oliveira Silva (Assessor)
+- João Francisco Garcia Reis (Diretor NGR)
+
+**4)** Secretaria de Estado de Saúde Pública;
+
+- Jorge Alberto Azevedo Andrade (Estatístico/Divisão Epidemiológica)
+
+**5)** Polícia Militar do Estado do Pará;
+
+- Leonardo Franco Sá
+- Armando Jofre Sousa de Lima (Major-PRE)
+
+**6)** Polícia Civil do Estado do Pará;
+
+- Fabrício Torres Pinheiro (Analista de Sistemas)
+- Thaiana Simôes Santos (Investigadora)
+
+**7)** Hospital Metropolitano de Urgência e Emergência;
+
+- Alba Lucia de Menezes Sá Muniz (Diretora Geral)
+- Renata Maria Vita Ciutinho (Médica)
+
+\newpage
+**8)** Centro de Perícias Científicas Renato Chaves;
+
+- Rildo Moraes Platino da Silva
+- Antônio Carlos da Silva Marques
+- Mário Francisco Guzzo Júnior (Perito-IML)
+
+**9)** POLÍCIA RODOVIÁRIA FEDERAL;
+
+- Valter Afonso Barbosa Braga
+- Marcelinho Campelo Filho
+
+**10)** Corpo de Bombeiros Militar do Estado do Pará;
+
+- Eden Neruda Antunes (Major-CBM)
+- Iara Ferreira Santos (Tenente-CBM)
+
+**11)** Serviço de Atedimento Móvel de Urgência;
+
+- Ermersson Carvalho dos Santos (Estatístico)
+- Geovana Cunha de Sousa (Assessor)
+
+**12)** Aspamoto
+
+- Vera Lúcia Oliveira dos Santos (Presidente da Aspamoto)
+- Verena Juliana Santos Quaresma
+
+\newpage
+# **INTRODUÇÃO**
+
+Em 2018, aproximadamente 1,35 milhão de pessoas morreram no mundo em consequência de acidentes de trânsito(WHO, 2018). No entanto, as consequências dos acidentes de trânsito no mundo vão além das áreas de trânsito e transporte, considerando-se um problema de saúde internacional e já tratado em alguns países como epidemia. No Brasil, os acidentes de trânsito representam um dos principais problemas de saúde pública presentes no país devido a sua elevada taxa de morbimortalidade, sobrecarga no istema de saúde e repercussão social (LIMA et al., 2019).
+
+A integração de dados tem objetivo de fornecer acesso unificado a dados residentes em multiplas e autonomas fontes de dados (DOMG e SRIVASTAVA, 2015). Logo, o processo de integração de dados é um modelo de gestão da informação aplicado a integração de múltiplas fontes de dados, desenvolvido a fim de apoiar a obtenção e integração de dados multissetorias de acidentes de trânsito (ABULATIF, 2018). Quanto a qualidade dos dados de óbitos provenientes dos Sistemas de Informações de sobre Mortalidade (SIM), dos Sistemas de Estatística de Acidentes dos Departamentos de Trânsito e Boletins de ocorrência das Policias Civis, observou-se aumento do percentual de causas mal definidas de morte. Em 2019, ainda se observam óbitos com códigos inespecíficos que, no caso de Acidentes de Trânsito e Transporte, podem chegar a 20% (MANDACARU et al., 2018). 
+
+Diante do exposto, os valores das estatísticas de mortalidade e morbidade por acidente de trânsito podem ser maiores, pois não existe, no Brasil, um sistema de informações que integre basese de dados da súade e do trânsito com objetivo de definir os registros inespecíficos e qualificar a informação.
+
+Para superar essa limitação, será implantado no Estado do Pará, o processo de integração das bases de dados da saúde e trânsito, melhorando a qualidade dos dados, complementando as informações e, assim, possibilitando o planejamento de ações mais efetivas para prevenção e redução dos acidentes de trânsito.
+
+## **(IN)SEGURANÇA VIÁRIA**
+
+Segundo a Organização Mundial da Saúde (WHO-2018) e pela Organização Pan-Americana da Saúde(OPAS-2016), em países localizados no
+continente americano, inclusive o Brasil, lesões causadas por acidentes de trânsito chegam a atingir anualmente mais de 174 mil pessoas.
+
+Na América do Sul, a Venezuela é o país que aparece em primeiro lugar no ranking,
+com um total de 45 mortes a cada 100 mil habitantes. O segundo país é a República
+Dominicana, na América do Norte, com índice de aproximadamente 29 pessoas a cada 100
+mil habitantes. O terceiro país é Belize, situado na América Central. Nele perecem por
+acidentes de trânsito cerca de 25 pessoas a cada 100 mil habitantes. O Brasil, na América do
+Sul, surge como quarto colocado no levantamento realizado, apresentando uma taxa
+aproximada de 23 óbitos para cada 100 mil habitantes.
+
+\newpage
+# **OBJETIVOS**
+### Objetivo Geral
+Analisar os dados de mortalidade e morbidade no trânsito do Estado do Estado do Pará, durante o período de 2019 a 2020.
+
+
+### Objetivos Específicos
+
+- Descrever o processo de gestão de integração de multiplas bases de dados;
+- Criar uma Base de Dados Ùnica e Pareada para Óbitos por acidentes de trânsito;
+- Calcular os indicadores de vítimas fatais por acidentes de trânsito.
+- Produzir boletins mensais e relatório Final.
+
+\newpage
+# **MATERIAL E MÉTODOS**
+## Caracterização da Area de Estudo 
+
+A abrangência geográﬁa dos dados refrentes ao projeto, contempla as informações coletadas dos boletins, relatórios, sistemas e planilhas, sobre  as ocorrências de acidentes de trânsito distribuídos em 144 municípios do Estado do Pará.
+
+## Fontes de Coleta de Dados
+A Coleta de Dados sobre Acidentes de Trânsito que alimentam a Lista Ùnica de Vítimas(LUVF) são feitas junto as seguintes fontes secundárias:
+
+- Boletins de Ocorrência da Polícia Civil (BO-SISP/PC);
+- Boletins de Ocorrência do Batalhão de Polícia Rodoviária Militar (BOAT/BPRE);
+- Boletins de Ocorrência da Polícia Rodoviária Federal(BOAT/PRF);
+- Boletins de Ocorrência de Resgate do Bombeiro(BOAT/CBM);
+- Boletins de Ocorrência de Resgate do SAMU(BOAT/SAMU);
+- Declaração de Òbito(DO/SESPA);
+- Autorização de Internação Hospitalar(AIH/SESPA);
+
+## Recursos Computacionais
+Para criação do relatório em formato WEB e PDF, foi criado um script em Linguagem de Programação R-PROJECT versão 4.1 e um Ambiente de Desenvolvimento Integrado(IDE) chamado Rstudio versão 1.4 com uso de vários pacotes, para o ambiente Windows. 
+
+## Linha de Base
+A definição de mortes e vítimas graves foi estalebecida com base no padrão da Organização Mundial de Saúde(OMS), que considera **Vítima Fatal** uma pessoa morta imediatamente ou até 30 dias, como resultado de acidente de trânsito, e como **Vítima Grave** a pessoa hospitalizada por pelo menos 24 horas devido a ferimentos sofridos em acidentes de trânsito (WHO, 2010).
+
+## Medotologia
+
+A metodologia adotada para o planejamento e execução do projeto foi apoiada na Estratégia de Proatividade e Parceria desenvolvidada pela GRSP(Global Road Safety Partnership), (CARDITA & DI PIETRO, 2010).
+
+A Estratégia de Proatividade e Parceria (EPP) consiste em um modelo
+desenvolvido para tratar das questões de segurança no trânsito.
+
+A etapas a serem desenvolvidas durante aplicação do projeto.
+
+- Articulação Intersetorial e Formação de Parcerias;
+- Qualificação, Integração e Análise de Dados;
+- Ações Integradas de Segurança no Trânsito;
+- Monitoramento, Avaliação de Desempenho e Reconhecimento;
+- Revisão Geral Anual;
+- Renovação e Expansão;
+
+## Processo de Integração de Dados (Pareamento)
+
+O processo de integração de dados é um modelo de gestão, desenvolvido com o objetivo de sistematizar a integração de múltiplas fontes de dados de acidentes de trânsito para a construção de indicadores de segurança viária.
+
+O processo foi realizado junto aos 144 municípios do Estado do Pará, e baseia-se na descrição da metodologia do Processo de Integração de Dados e na descrição de suas etapas, seguindo-se com a presentação do resultados.
+
+O processo de integração de dados é cíclico de melhoria contínua, no qual as principais etapas são:
+
+- Integração de Pessoas
+- Diagnóstico Situacional
+- Definição e Execução do Fluxo de Trabalho
+- Entrega de Resultados
+- Ajustes e Melhorias
+
+## Etapas de integração de Dados
+### Etapa 1 - Integração de Pessoas
+
+A etapa de integração de pessoas é a primeira, pois em termos de segurança viária, espera-se que diferentes agências possuam dados de acidentes de trânsito. O primeiro passo é estabelecer a Comissão de Análise de dados, composta de por profissionais que trabalham na Segurança Pública e Saúde do Estado do Pará.
+
+### Etapa 2 - Diagnóstico Situacional
+
+Na etapa 2, realiza-se o diagnóstico situacional para proporcionar melhor compreensão sobre os **Sistemas de Informações de Acidentes de Trânsito** em cada cidade.
+
+A comissão de análise de dados identifica todas as instituições que possuem dados sobre acidentes de trânsito, e as informações observadas são:
+
+- Nome da Organização;
+- Se atende à Cena da Ocorrência;
+- Se gera Boletim Físico ou Eletrônico;
+- Se armazena dados em formato Físico ou Eletrônico;
+- Se alguém da Comissão tem acesso ao banco de dados;
+- Natureza dos Dados;
+- Se é considerada crítica para o monitoramento de acidentes;
+- Se é já está em uso pela instituição;
+
+Nesta etapa, a comissão de dados identifica onde e como os dados podem ser obtidos. 
+
+\newpage
+### Etapa 3 - Definição e Execução do Fluxo de Trabalho
+**Definição das Variáveis**
+
+Nesta etapa são definidas quais variáveis de cada banco de dados deverão ser compartilhadas, a fim de se construir um banco de dados integrado de vítimas de acidentes de trânsito.
+
+Será utilizadas bases de dados com identificação de vítimas e localização do acidente, como:
+
+- Nome;
+- sexo;
+- Idade;
+- Escolaridade;
+- Estado Civil;
+- Endereço da Ocorrência;
+- Horário da Ocorrência;
+- Data da Ocorrência, 
+- Modo de Transporte;
+- Condição da vítima;
+
+Sendo consideradas como variáveis explicativas mínimas e aptas para análise.  
+
+**Limpeza, Padronização e Pareamento**
+Para viabilizar o procedimento de relacionamento das basese de dados(*linkage*) procedeu-se a fase de Limpeza na qual foram identificadas as variáveis comuns entre as base de dados. Tal prodecimento viabilizará a remoção de registros duplicados relacionados à mesma vítima de uma determinada ocorrência de trânsito.
+
+A padronização foi usada para a preparação das variáveis e diminuição de erros para a fase de pareamento. Foram retirados acentos, cedilhas, espaços, algarismos e outros símbolos, e feita a conversão dos nomes das vítimas de letras minúsculas em maiúsculas.
+
+As Bases de dados serão unidas, originando-se um banco de dados integrado de vítimas de acidentes de trânsito apartir da utilização de registros que possuíam informações *in loco*.
+
+**Desfecho**
+Os arquivos sem nome serão excluídos previamente, de todas as base de dados, por não serem passiveis de relacionamento.
+
+A utilização dos dados referentes aos sistemas de informação de cada instituição parceira, seguirá a recomendação da Comissão Nacional de Ètica em Pesquisa (CONEP), quanto a preservação do sigilo.
+
+### Etapa 4 - Entrega dos Resultados
+A entrega dos resultados se dará por meio de duas maneiras principais. Primeiro as variáveis são selecioanadas e organizadas em várias tabelas, gráficos e mapas. 
+
+Segundo, os dados serão entregues para serem utilizados pelas equipes de análise de acidentes, fiscalização e engenharia, na identificação de fatores e condutas de risco, usuários que contribuíram  para ocorrência do acidente e grupos de vítimas, gerando diagnóstico mais fiel e subsidiando a criação de políticas públicas específicas.
+
+\newpage
+# **RESULTADOS**
+## **Pareamento dos Dados**
+
+O processo de integração de dados foi realizado junto aos municípios que compõem a Região Metropolitana de Belém:
+
+- Belém;
+- Ananindeua;
+- Marituba;
+- Benevides;
+- Santa Bárbara
+- Santa Isabel;
+
+Foram utilizados na Primeira Fase do pareamento, os registros dos **Boletins de Ocorrência(BO)**, disponibilizados pela Polícia Civil do Pará através do **Sistema Integrado de Segurança Pública(SISP) on-line**, com acesso as mais de 570 delegacias nos 144 municípios Paraenses, cruzando com os Laudos Periciais registrados no IML-PA, criando uma **Lista Ùnica de Vitimas Fatais (LUVF)**.
+
+Nesse contexto, surge uma nova variável no pareamento, a **CONCENTRAÇÃO DE ALCOOL(CAS)**, medida em decigramas de alcool por litro de sangue, relizado através do Exame Pericial nas vítimas fatais decorrentes de acidentes de trânsito.
+
+Na Legislação Federal, não existe uma Resolução do CONTRAN, que base para comparação com os artigos 165 e 306 do CTB. Assim, é realizado a conversão do exame realizado em decigramas para Miligramas, com base na orientação da OMS provenientes dos manuais de segurança viária (WHO, 2019).
+
+$$  CONVERSÃO =  \frac{1 \ decigrama}{100 \ miligramas} \times 2.000(constante \ etílica)= 1 \ miligrama$$
+De acordo com o processo de conversão, o resultado do teste para cada indivíduo, será em miligramas de álcool por ar alveolar, sendo possível reclassificar em exame negativo, infração administrativa e crime de trânsito. Gerando uma estimativa de óbitos sobe o efeito de álcool no momento do insidente de trânsito.
+
+Durante a segunda etapa, procedeu-se o relacionamento da LUVF com os **Boletins de Ocorrência de Acidentes de Trânsito Rodoviário(BOAT)** sedidos pelo Batalhão de Policia Rodoviária Estadual(BPRE), que mediante termo de cooperação técnica com o DETRAN-PA, executam a competência rodoviária de trânsito nas rodovias estaduais que cruzam o Estado.
+
+Importante destacar que, os BOATs apresentam um croqui mais detalhado sobre a mecânica do acidente de trânsito, sendo utilizado como informação complementar para definição de possível fator de risco ou causas provaveis do Acidente de Trânsito. 
+
+Na terceira etapa foi relizado o pareamento da LUVF com as informações dos **Boletins de Ocorrência de Acidentes de Trânsito(BOAT)** sedidos pela Polícia Rodoviária Federal (PRF), que mediante o termo de cooperação técnica com o DETRAN-PA, que estadualizou os serviços de fiscalização na BR-316 do kilômetro zero ao 18.
+
+Na quarta etapa foi relizado o pareamento da LUVF com as informações sobre o Resgate dos pacientes com os **Boletins de Acidentes de Trânsito(BOAT)** sedidos pelo Corpo de Bombeiros Militar do Pará.
+
+Os registros das vítimas acumulados até o momento, serão cruzados com os bancos de dados de hospitalização(**Autorização de Internação Hospitalar(AIH)**) para cada município, com objetivo de se identificarem as vítimas que foram internadas pelo menos 24 horas e qual a procedência do Resgate(Samu e/ou Bombeiro). Os dados de hospitalização serão obtidos apartir do **Sistema de Informações Hospitalares do Sistema Ùnico de Saúde (SIH/SUS)**, disponibilizados pelo **Hospital Metropolitano de Urgência e Emergência(HMUE)**.
+
+Os bancos de dados das AIH, apesar de terem a finalidade básica de propiciar a remuneração de atividades hospitalares, constituem a única fonte abrangente de informações sobre a distribuição das causas de internação do SUS.
+
+Os dados das declarações de òbitos serão obtidas a partir do **Sistema de Informações de Mortalidade (SIM)**, disponibilizados pela **Secretaria de Estado de Saúde Pública do Pará(SESPA-PA)**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+## **Análise Descritiva dos Dados**
+### **Fontes de Dados**
+
+A tabela 01 apresenta a quantidade de fichas, boletins de ocorrência e registro de cada instituição policial, resgate, saúde ou de trânsito referente aos acidentes ocorridos na Região Metropolitana de Belém em 2020. Ao analisar a tabela pode ser verificado que para o referido período, em relação ao registro de óbitos, o SISP apresentou a maior quantidade de (N=224), seguido IML (N=200), seguido do SAMU (N=26), Bombeiro (N=19) e PRE(N=02). 
+
+**Tabela 01**. Distribuição das Vítmas Fatais, segundo **Fontes de Dados** versus **Local de Fatalidade** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+|  **FONTES DE DADOS**   |  **N(AMOSTRA)** |  **PARTICIPAÇÃO(%)** |
+|   :---------:          |  :---------:    |    :---------:       |
+| RMVB                   |      231        |    100               |
+| SISP                   |      224        |    96,9              |
+| IML                    |      200        |    86,6              |
+| SAMU                   |      26         |    11,3              |
+| CBM                    |      19         |    8,2               |
+| PRE                    |      2          |    0,9               |
+| SISP/IML               |     192         |    83,1              |
+| SISP/IML/SAMU          |     26          |    11,3              |
+| SISP/IML/CBM           |     16          |    6,9               |
+
+
+### **Taxas de Mortalidade**
+
+A região metropolitana de Belém apresentou uma taxa de mortalidade por acidente de trânsito e Transporte(ATT) de 13,4/100 mil habitantes e a capital Belém teve uma taxa de mortalidade  por ATT de 8,8/100 mil habitantes em 2020.
+
+
+**Tabela 02** Distribuição das Vítmas Fatais, segundo **Local de Ocorrência** versus **Taxas de Òbitos** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+|  **Indicadores**       |    **Taxa 100.000/hab.**     |   **Taxa 10.000/Veic.**      |  **Amostra(N)**        |
+| :-------------------:  |     :-------------------:    |      :-------------------:   |  :-------------------: |
+| RMVB                   |            13,5              |             7,3              |        231             |
+| Belém                  |            8,8               |             5,45             |        132             |
+| Ananindeua             |            9,71              |             7,3              |         52             |
+| Marituba               |            13,46             |             17,36            |         18             |
+| Benevides              |            23,52             |             30,05            |         15             |
+| Sta. Bárbara do Pará   |            23,31             |             44,8             |         05             |
+| Sta. Isabel do Pará    |            11,14             |             13,8             |         08             |
+
+\newpage
+### **Características SócioEconômicas**
+
+Após o processo de pareamento dos dados, é feito a produção da análise descritiva inicial das informações, podendo
+obter perfis culturais de segurança viária nos municípios, levando em conta a frequência dos dados, segundo o local de ocorrência, 
+caraceterísticas pessoais, locais de residências e fatores de risco. 
+
+**Tabela 03** Distribuição das Vítmas Fatais, segundo **Local de Ocorrência** versus **Características Socio-Econômicas** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   | **Categorias** |  **Belém**    | **Ana.**     | **Benevides** | **Marituba**| **S.Barbara** | **S.Isabel** |**TOTAL** | 
+| :-------------: | :-----------:  | :-----------: | :--------:   | :----------:  | :--------:  | :------:      | :------:     |:------:  |
+|      Sexo       |   Masculino    |    110        |  40          |  12           | 16          | 4             |   6          |  189     |
+|                 |   Feminino     |    22         |  12          |  3            | 2           | 1             |   2          |  42      |
+|                 |    0 a 17      |    14         |  20          |   7           | 4           | 1             |  6           |  52      |
+|                 |    18 a 25     |    25         |  5           |   2           | 2           | 2             |  1           |  37      |
+|  Faixa Etária   |    26 a 35     |    32         |  8           |   3           | 2           | -             |  -           |  46      |
+|                 |    36 a 45     |    15         |  7           |   3           | 2           | -             |  1           |  25      |
+|                 |    46 a 59     |    25         |  5           |   -           | 4           | 1             |  -           |  38      |
+|                 |    60 ou +     |    21         |  7           |   -           | 4           | 1             |  -           |  33      |
+|                 |      EF        |   61          |  17          |   6           | 10          | 1             |  1           |  97      |
+|  Escolaridade   |      EM        |   54          |  35          |   9           | 8           | 4             |  7           |  117     |
+|                 |      ES        |   17          |  -           | -             | -           | -             |  -           |  17      |
+|                 |   Solteiro     |  76           |  33          |   11          | 11          | 2             |  8           |  142     |
+|                 |    Casado      |  24           |  6           |   3           | 4           | 2             | -            |  39      |
+|  Estado Civil   |  Divorciado    |  4            |  1           | -             | -           | -             | -            |  5       |
+|                 | União Estável  |  26           |  12          |   1           | 2           | 1             | -            |  42      |
+|                 |     Viúvo      |  2            |  -           | -             | 1           | -             | -            |  3       |
+|                 |   **TOTAL**    |    **132**    |  **52**      |  **15**       | **18**      | **5**         | **8**        | **231**  |
+
+\newpage
+**Tabela 04** Distribuição das Vítmas Fatais, segundo **Condição da Vítima** versus **Características Socio-Econômicas** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   | **Categorias** |  **Pedestre**      | **Ciclista** | **Motociclista** | **Passageiro** | **Condutor** | **TOTAL**|
+| :-------------: | :-----------:  | :----------------: | :------:     | :----------:     | :--------:     | :------:     | :------: |
+|      Sexo       |   Masculino    |    44              |   26         |  100             |   10           |  9           |  189     |
+|                 |   Feminino     |    17              |   3          |  7               |   13           |  2           |  42      |
+|                 |    0 a 17      |    11              |   10         | 23               |   6            |  2           |  52      |
+|                 |    18 a 25     |    7               |   3          | 22               |   5            |  -           |   37     |
+|  Faixa Etária   |    26 a 35     |    11              |   1          | 25               |   5            |  4           |   46     |
+|                 |    36 a 45     |    7               |   2          |  15              |   -            |  1           |    25    |
+|                 |    46 a 59     |   13               |   5          |  15              |   3            |  2           |    38    |
+|                 |    60 ou +     |   12               |   8          |  7               |   4            |  2           |    33    |
+|                 |      EF        |   35               |   17         |  33              |   9            |  3           |   97     |
+|  Escolaridade   |      EM        |   22               |   12         |  65              |   11           |  7           |   117    |
+|                 |      ES        |   4                |   -          |  9               |   3            |  1           |   17     |
+|                 |   Solteiro     |    42              |   16         |  63              |   15           |  6           |  142     |
+|                 |    Casado      |    7               |   6          |  22              |   3            |  1           |  39      |
+|  Estado Civil   |  Divorciado    |    -               |   1          |  2               |   1            |  1           |   5      |
+|                 | União Estável  |   10               |   5          |  20              |   4            |  3           |   42     |
+|                 |     Viúvo      |    2               |   1          |  -               |   -            |  -           |   3      |
+|                 |   **TOTAL**    |  **61**            | **29**       |  **107**         |   **23**       |  **11**      | **231**  |
+
+\newpage
+**Tabela 05** Distribuição das Vítmas Fatais, segundo **Tipos do Acidente** versus **Características Socio-Econômicas** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**|**Categorias**|**Atropel.**     |**Choque c/Objeto**|**Colisão Bicicleta**|**Colisão Veículos**|**Queda de Moto**|**Outros**|**TOTAL**|
+| :-----------: | :---------: | :------------:  | :------:          | :----------:        | :--------:       | :------: | :------: | :------: |
+|      Sexo     |   Masculino |   43            |  12               |      30             | 72               |  25      | 7        |  189     |
+|               |   Feminino  |   17            |   -               |      3              | 16               |  2       | 4        |   42     |
+|               |    0 a 17   |  11             |  3                |    11               |  17              |  7       |  3       |   52     |
+|               |    18 a 25  |  7              | 1                 |     4               |   18             |  7       |   -      |   37     |
+|  Faixa Etária |    26 a 35  |  11             | 5                 |     2               |   22             |  4       |   2      |   46     |
+|               |    36 a 45  |  7              | 1                 |     2               |   11             |  3       |   1      |  25      |
+|               |    46 a 59  |  13             | 1                 |     6               |   12             |  4       |   2      |  38      |
+|               |    60 ou +  |  11             | 1                 |     8               |   8              |  2       |   3      |  33      |
+|               |      EF     |  34             | 4                 |     18              |   33             |  4       |   4      |  97      |
+| Escolaridade  |      EM     |  22             | 7                 |     15              |   48             |  19      |   6      | 117      |
+|               |      ES     |   4             | 1                 |     -               |   7              |  4       |   1      |  17      |
+|               |   Solteiro  |  41             | 5                 |     20              |   53             | 16       |   7      |  142     |
+|               |    Casado   |  7              |  2                |     6               |   15             |  8       |   1      |  39      |
+|  Estado Civil |  Divorciado | -               |   -               |     1               |   2              |  1       |   1      |  5       |
+|               |U.E          | 10              |   5               |     5               |   18             |  2       |   2      |  42      |
+|               |     Viúvo   | 2               |   -               |     1               |   -              |  -       |   -      |   3      |
+|               | **TOTAL**   |   **60**        |  **12**           |  **33**             |  **88**          |**27**    | **11**   |  **231** |
+
+\newpage
+**Tabela 6** Distribuição das Vítmas Fatais, segundo **Meio/Modo de Locomoção** versus **Características Socio-Econômicas** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   | **Categorias** | **A Pé** | **Bicicleta** | **Motocicleta** | **Automóvel** | **NI**   | **TOTAL** |
+| :-------------: | :---------:    | :------: | :------:      | :----------:    | :--------:    | :------: | :------:  |
+|      Sexo       |   Masculino    |   42     |   26          |    111          |   8           |   2      |  189      |
+|                 |   Feminino     |   16     |    3          |    15           |   5           |   3      |   42      |
+|                 |    0 a 17      |   11     |    10         |    26           |   4           |   1      |   52      |
+|                 |    18 a 25     |   7      |     3         |    27           |   -           |   -      |   37      |
+|  Faixa Etária   |    26 a 35     |   11     |     1         |    30           |   4           |   -      |   46      |
+|                 |    36 a 45     |   7      |     2         |    15           |   -           |   1      |   25      |
+|                 |    46 a 59     |   12     |     5         |    18           |   1           |   2      |   38      |
+|                 |    60 ou +     |   10     |     8         |    10           |   4           |   1      |   33      |
+|                 |      EF        |   33     |     17        |    40           |   4           |   3      |   97      |
+|  Escolaridade   |      EMC       |   21     |     12        |    74           |   9           |   1      |   117     |
+|                 |      ESC       |   4      |      -        |    12           |   -           |   1      |   17      |
+|                 |   Solteiro     |   40     |      16       |    76           |   7           |   3      |   142     |  
+|                 |    Casado      |   7      |      6        |    23           |   3           |   -      |   39      |
+|  Estado Civil   |  Divorciado    |   -      |      1        |    3            |   -           |   1      |   5       |
+|                 | União Estável  |   10     |      5        |    24           |   2           |   1      |   42      |
+|                 |     Viúvo      |   1      |      1        |    -            |   1           |   -      |   3       |
+|                 |  **TOTAL**     |   **58** |  **29**       |     **126**     |   **13**      |   **5**  |   **231** |    
+
+\newpage
+**Tabela 07** Distribuição das Vítmas Fatais, segundo **Turno da Ocorrência** versus **Características Socio-Econômicas** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   | **Categorias**|   **Noite**    | **Tarde**| **Manhã**   | **Madrugada** | **NI**   |**TOTAL** |
+| :-------------: | :-----------: | :------------: | :------: | :----------:| :--------:    | :------: |:------:  |
+|      Sexo       |   Masculino   |  62            |  43      |  42         |   38          |   4      |  189     |
+|                 |   Feminino    |  11            |  12      |   11        |   5           |   3      |  42      |
+|                 |    0 a 17     |  13            |  16      |   15        |   7           |   1      |  52      |
+|                 |    18 a 25    |  11            |  4       |   11        |   10          |   1      |  37      |           
+|  Faixa Etária   |    26 a 35    |  19            |  9       |   8         |   10          |   -      |  46      |           
+|                 |    36 a 45    |  12            |  5       |   4         |   3           |   1      |  25      |          
+|                 |    46 a 59    |  11            |  10      |  6          |   8           |   3      |  38      |          
+|                 |    60 ou +    |  7             |  11      |  9          |   5           |   1      |  33      |          
+|                 |      EF       |  38            |  25      | 19          |   12          |   3      |  97      |            
+|  Escolaridade   |      EM       |  31            |  26      | 30          |   27          |   3      |  117     |          
+|                 |      ES       |  4             |  4       |  4          |   4           |   1      |  17      |          
+|                 |   Solteiro    | 48             |  31      | 33          |   26          |   4      |  142     |          
+|                 |    Casado     | 13             |  8       | 8           |   9           |   1      |   39     |          
+|  Estado Civil   |  Divorciado   | 1              |  2       | 1           |   -           |   1      |   5      |          
+|                 | União Estável | 11             |  13      | 10          |   7           |   1      |   42     |           
+|                 |     Viúvo     | -              |  1       | 1           |   1           |   -      |   3      |          
+|                 |   **TOTAL**   |  **73**        |  **55**  |  **53**     |  **43**       | **7**    | **231**  |    
+
+\newpage
+**Tabela 08** Distribuição das Vítmas Fatais, segundo **Dosagem Alcoólica(mlg)** versus **Características Socio-Econômicas** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   | **Categorias**|   **NE**     |  **NI**      | **Negativo** | $0.05 |--- 0.33$ | $> 0.34$   | **TOTAL**  |
+| :-------------: | :-----------: | :---------:  |       |:---------:  | :----------:     | :--------: | :--------: |
+|      Sexo       |   Masculino   |    22        |     77       |   10             |  54        |   189      |
+|                 |   Feminino    |    15        |     21       |   5              |  1         |    42      |
+|                 |    0 a 17     |    25        |     15       |   4              |  8         |   52       |
+|                 |    18 a 25    |    6         |    20        |   2              |  9         |   37       |
+|  Faixa Etária   |    26 a 35    |    7         |    23        |   1              |  15        |   46       |
+|                 |    36 a 45    |    7         |    8         |   1              |  9         |   25       |
+|                 |    46 a 59    |    11        |    14        |   3              |  10        |   38       |
+|                 |    60 ou +    |    7         |    18        |   4              |  4         |   33       |
+|                 |      EF       |    17        |    48        |   7              |  25        |   97       |
+|  Escolaridade   |      EM       |    42        |    42        |   7              |  26        |   117      |
+|                 |      ESI      |     4        |    8         |   1              |   4        |   17       |
+|                 |   Solteiro    |    45        |    49        |   9              |  39        |   142      |
+|                 |    Casado     |    12        |     21       |   1              |  5         |     39     |
+|  Estado Civil   |  Divorciado   |    2         |     1        |   2              |   -        |     5      |
+|                 | União Estável |    4         |     24       |   3              |  11        |      42    |
+|                 |     Viúvo     |   -          |     3        |   -              |   -        |      3     |    
+|                 |   **TOTAL**   |   **63**     |  **98**      |    **15**        |  **55**    | **231**    |
+
+\newpage
+### **Calendário de Ocorrências dos Acidentes**
+
+A tabela 05  apresenta o calendário com a distribuição das ocorrências dos acidentes de trânsito com vítimas fatais ocorridos no decorrer de 2020 e que resultaram em  231 vítimas. Dezembro e março apresentarem o maior número de vítimas fatais (23,4%) e os meses de abril e junho o menor quantitativo (9,9%). Destaca-se ainda que os dias da semana com maior número de óbitos foram domingo (25,9%) e segunda (15,2%).
+
+**Tabela 09** Distribuição das Vítmas Fatais, segundo **Dias da Semana** versus **Calendário de Ocorrências** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   | **Categorias**| **Domingo** | **Segunda** | **Terça**    | **Quarta** | **Quinta** | **Sexta**| **Sábado**|**TOTAL**|
+| :-------------: | :-----------: | :---------: | :---------: | :----------: | :--------: | :------:   | :------: | :------:  |:------: |
+|                 | 00:00 a 05:59 |   16        |   4         |   3          |  4         |   7        |    3     |   6       |  43     |
+|                 | 06:00 a 11:59 |   9         |   9         |   6          |  12        |   3        |   8      |   6       |  53     |
+|  Turnos         | 12:00 a 17:59 |   6         |   14        |   3          |  8         |   5        |  6       |   13      |  55     |
+|                 | 18:00 a 23:59 |   22        |   8         |   8          |  9         |   5        |  12      |  9        |  73     |
+|                 |  Janeiro      |  2          |   4         |    4         |  1         |   -        |  3       |   2       |  16     |
+|                 |  Fevereiro    |  2          |   1         |   2          |  4         | 2          |  1       |   4       |  16     |
+|                 |  Março        |  6          |   6         |   -          |  3         | 3          |  4       |   5       |  27     |
+|                 |  Abril        |  -          |   2         |   -          |  3         | 3          |  3       |   4       |  15     |
+|                 |  Maio         |  2          |   2         |   3          |  1         | -          |  4       |   2       |  14     |
+|   Meses         |  Junho        |  2          | 2           |   -          |  1         | 1          |  -       |   2       |  8      |
+|                 |  julho        |  4          | 2           |   4          |  4         | 2          |  1       |   1       |  18     |
+|                 |  Agosto       |  10         | 2           |   2          |  4         | 2          |  3       | 3         |  26     |
+|                 |  Setembro     |  5          | 6           | 1            |  3         | -          |  1       | 2         |  18     |
+|                 |  Outubro      |  6          | -           |   1          |  4         | 1          |  3       | 1         |  16     |
+|                 |  Novembro     |   10        |   4         |   2          |  1         |   2        |  1       | 2         |  22     |
+|                 |  Dezembro     |   4         |    4        |   1          |    4       |   4        |    5     |   6       |  28     |
+|                 | **TOTAL**     | **53**      | **35**      | **20**       |  **33**    | **20**     |  **29**  | **34**    | **231** |
+
+\newpage
+**Tabela 10** Distribuição das Vítmas Fatais, segundo **Local de Ocorrência** versus **Calendário de Ocorrências** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   | **Categorias**|  **Belém**  | **Ana.**    | **Benevides**| **Marituba**| **S.Barbara** | **S.Isabel** |**TOTAL**  | 
+| :-------------: | :-----------: | :---------: | :---------: | :----------: | :--------:  |    :------:   | :------:     | :------:  |
+|                 | 00:00 a 05:59 |    27       |   9         |   2          |   2         |    1          |  2           |  43       |
+|                 | 06:00 a 11:59 |    36       |   9         |   3          |   5         |    -          |  -           |  53       |
+|  Turnos         | 12:00 a 17:59 |    32       |   15        |   2          |   3         |    1          |  1           |  55       | 
+|                 | 18:00 a 23:59 |    33       |   18        |   8          |   8         |    3          |   5          |   73      |
+|                 | Domingo       |    29       |   11        |   5          |    3        |    3          |   2          |   53      |
+|                 | Segunda       |    18       |   13        |   2          |    1        |    1          |   -          |   35      |
+|                 | Terça         |    11       |   3         |   2          |    1        |    -          |   3          |   20      |
+|  Dias Semana    | Quarta        |    20       |   9         |   -          |    3        |    -          |   1          |   33      |
+|                 | Quinta        |    13       |   3         |   1          |    1        |    1          |   1          |   20      |
+|                 | Sexta         |    19       |   3         |   2          |    4        |    -          |   -          |   29      |
+|                 | Sábado        |    18       |   9         |   2          |    4        |    -          |   1          |   34      |
+|                 |  Janeiro      |   8         |   5         |   1          |   1         |    -          |   1          |   16      |
+|                 |  Fevereiro    |   10        |   4         |   1          |   -         |    -          |   1          |   16      |
+|                 |  Março        |   16        |   4         |   3          |   3         |    1          |  -           |   27      |
+|                 |  Abril        |   9         |   4         |   2          |   3         |    -          |   1          |   15      |
+|                 |  Maio         |   7         |   3         |   -          |   2         |    -          |   1          |   14      |
+|   Meses         |  Junho        |   3         |   6         |   -          |   2         |    -          |   -          |   8       |
+|                 |  julho        |   7         |   4         |   1          |   -         |    1          |   3          |   18      |
+|                 |  Agosto       |   15        |   4         |   3          |   -         |    3          |   1          |   26      |
+|                 |  Setembro     |   13        |   4         |   1          |   -         |    -          |   -          |   18      |
+|                 |  Outubro      |   10        |   5         |   -          |   -         |    -          |   -          |   16      |
+|                 |  Novembro     |   12        |   7         |   1          |    2        |    -          |   -          |   22      |
+|                 |  Dezembro     |   18        |   5         |   1          |    4        |    -          |   -          |   28      |
+|                 | **TOTAL**     | **132**     | **52**      | **15**       |  **18**     | **5**         |  **8**       | **231**   |
+
+\newpage
+**Tabela 11** Distribuição das Vítmas Fatais, segundo **Meses** versus **Características Socio-Econômicas** para os Acidentes de Trânsito na Região Metropolitana de Belém, 2020.
+
+| **Variáveis**   |**Categorias**|**Jan**|**Fev**|**Mar**|**Abr**|**Mai**|**Jun**|**Jul**|**Ago**|**set**|**Out**|**Nov**|**Dez**|**TOTAL**| 
+|    :-----:      |    :-----:   | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |  :---:  |
+|   **Sexo**      |   Masculino  | 12    |  13   |   24  |  14   |   14  |   6   | 13    | 23    |   14  | 12    | 18    | 22    |  189    |
+|                 |   Feminino   | 4     |  3    |   3   |  1    |   -   |   2   |   5   |   3   |  4    |   4   |   4   | 6     |  42     |
+|                 |    0 a 17    | 8     |   4   |   6   |  2    | 5     |   2   |   5   |   7   |   2   |   2   |   4   | 4     |  52     |
+|                 |    18 a 25   | 2     |   2   |   1   |  2    | 1     |   1   |   4   |   9   |   4   |   2   |   1   | 7     |  37     |
+| **Faixa Etária**|    26 a 35   |  2    |   3   |   7   |  3    |   3   |   2   |   3   |   6   |   2   |   4   |   5   | 6     |  46     |
+|                 |    36 a 45   |   2   |   -   |   3   |   -   |   -   |   1   |   1   |   2   |   1   |   2   |   6   | 6     |  25     |
+|                 |    46 a 59   | 1     |   2   |   5   |   2   |   4   |   1   |   3   |   1   |   6   |   1   |   4   | 5     |  38     |
+|                 |    60 ou +   |  1    |   5   |   5   |   6   |   1   |   1   |   2   |   1   |   3   |   5   |   2   | -     |   33    |
+|                 |      EF      |  7    |   9   |   12  |   5   |   4   |   5   |   4   |   8   |   10  |   9   |   13  | 8     |   97    |
+| **Escolaridade**|      EM      |  7    |   6   |   15  |   8   |   7   |   2   |   13  |   17  |   6   |   7   |   8   | 18    |   117   |
+|                 |      ESI     |  2    |   1   |   -   |   2   |   3   |   1   |   1   |   1   |   2   |    -  |   1   |   2   |    17   |
+|                 |   Solteiro   | 11    |   10  |   12  |   6   |   9   |   6   |   13  |   19  |   9   |   10  |   14  |   19  |  142    |
+|                 |    Casado    | -     |   4   |   5   |   5   |   1   |   1   |   3   |   4   |   3   |   3   |   5   |   4   |   39    |
+| **Estado Civil**|   Divorciado |  1    |   -   |   -   |   3   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   1   |    5    |
+|                 |     UE       |   4   |   2   |   10  |   2   |   4   |   1   |   2   |   2   | 6     |   2   |   2   |   4   |   42    |
+|                 |     Viúvo    |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   1   |   -   |   1   |   1   |   -   |   3     |
+|                 | **TOTAL**    |**16** |**16** |**27** |**15** |**14** |**8**  |**18** |**26** |**18** |**16** |**22** |**28** | **231** |
+
+\newpage
+## **Análise dos Fatores e Condutas de Risco**
+
+O objetivo da análise de fatores e condutas de risco é compreender os determinantes e condicionantes de cada um dos acidentes fatais ocorridos no período de 2019 a 2020 nos município da Região metropolitana de Belém, e hierarquizar os fatores que contribuíram para a ocorrência e/ou severidade do acidentes.
+
+Levantando a dinâmica dos acidentes com vítimas fatais, identificar os fatores e as condutas de risco que mais contribuem
+para a ocorrência do evento, e e determinar a importância que cada um deles
+teve na gravidade da lesão. 
+
+
+Para a identificação dos fatores de risco, a Comissão de Análise de Dados terá como base
+as seguintes fontes:
+
+- Boletins de Ocorrência do Acidente de Trânsito;
+- Boletins do Resgate do SAMU/BOMBEIRO; 
+- Relatório da Perícia Técnica;
+- Prontuário Hospitalar;
+- Notícias da Imprensa;
+- Imagens do Local do Acidente(Croquis, Fotos, Google)
+
+\newpage
+# **ANÁLISE E INTERVENÇÃO**
+
+Pós pareamento de dados, análise e definição dos fatores de risco, discriminados por condição da vítima, modo de locomoção, bairro e calendário de ocorrências, serão sugeridos a criação de Planos de Ação Integrados, para realizar intervenções com grupo focal, com equipes da àrea de Educação, Engenharia, Fiscalização e Policiamento de trânsito.  
+
+Conforme, os levantamentos estatísticos que pudemos realizar até esta parte dos trabalhos, observamos que o DETRAN-PA deste trabalho também terá que realizar mudança em sua estrutura para melhorar a entrega dos seus resultados referentes a fiscalização, educação de trânsito no Estado do Pará.
+
+# **CONCLUSÃO**
+
+Os resultados sugerem que o processo de integração de dados fornece bons resultados e pode ser adotados em outras cidades que necessitam de informaçãoes confiáveis sobre acidentes de trânsito para subsidiar o planejamento, monitotramento e avaliação de ações de segurança viária. 
+
+
+\newpage
+# **REFERÊNCIAS BIBLIOGRÁFICAS**
+
+ABULATIF, Lisandro Iusry. Processo de integração de dados: um modelo de gestão da informação para múltiplas bases de dados de acidentes de trânsito no Brasil. Epidemiol. Serv. Saúde,  Brasília ,  v.27, n.02,  jun.,  2018.  
+
+CENTERS FOR STATISTICS AND ANALYSIS. Alcohol involvement in fatal crashes 2001. Washington: NHTSA; 2003.
+
+CARDITA, J. DI PIETRO, G. Proactive Partnership Strategy: a Community Participation Model to Addres Road Safety. Geneva: Global Road Safety Partnership, 2010.
+
+DONG, L. X., SRISVASTANA, D. Big data Integration. Morgan & Claypool, 2015. 
+
+LIMA, T. F., et al. Análise Epidemiológica dos Acidentes de Trânsito no Brasil. Encontro de Extensão, Docência e Iniciação Científica (EEDIC), V.05, nº01, mar, 2019. ISSN 2446-6042.
+
+MANDACARÚ, Polyana Maria Pimenta et al. Óbitos e feridos graves por acidentes de trânsito em Goiânia, Brasil - 2013: magnitude e fatores associados.
+
+NATIONAL CENTER FOR STATISTICS AND ANALYSIS. (2021, june). Early estimates of motor vehicle traffic fatalities and fatality rate by sub-categories in 2020 (Crash Stats Brief Statistical Summary Report), National Highway Traffic Safety Administration.
+
+R DEVELOPMENT CORE TEAM. R4.1: A language and Enviornment for Statistical Computing, 2021.<https://cran.r-project.org/bin/windows/base>. 
+
+RSTUDIO. Rstudio: Integrated Development Environment for R (versão 1.4.1).<https://rstudio.com/products/rstudio/download/#download>.
+
+WORLD HEALTH ORGANIZATION. Data System: a Road Safety Manual for Decision-Makers an Pratctitioners. Management of Noncommunicable Diseases, Disability, Violence and Injury Prevention (NVI), Geneva: Switzerland, 2010.
+
+WORLD HEALTH ORGANIZATION. Global Status Report on Road Safety 2018. Management of Noncommunicable Diseases,
+Disability, Violence and Injury Prevention (NVI), Geneva: Switzerland, 2018.
+
+
+
+
