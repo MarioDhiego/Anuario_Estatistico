@@ -1,0 +1,2024 @@
+---
+title: "ANUÁRIO ESTATÍSTICO DE ACIDENTES DE TRÂNSITO NO PARÁ"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    fig_width: 7 
+    fig_height: 6 
+    fig_caption: true
+    df_print: paged
+    highlight: textmate
+    theme: cerulean
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+    number_sections: yes  
+  pdf_document:
+    toc: yes
+    toc_depth: '10'
+abstract: "A Assembléia Geral da Organização das Nações Unidas(ONU), por meio da Resolução A/RES/74/299, de 31 de agosto de 2020, lançou a Década de Ação pela Segurança Viária 2021-2030, com o objetivo de reduzir em pelo menos 50% de vítimas fatais e feridos graves no trânsito, bem como solicita aos Estados-Membros que continuem adotando medidas até 2030 para alcançar as metas dos Objetivos de desenvolvimento Sustentável relacionados à segurança viária, em especial a meta 3.6. Atento ao assunto, o Departamento de Trânsito do Estado do Pará - DETRAN/PA, com sua missão fundamentada nos princípios da Política Nacional de Trânsito - PNT (Resolução CONTRAN nº 514, de 18 de dezembro de 2014), apresenta, neste documento, informações sobre a gestão dos dados estatísticos de Segurança Viária no Estado do Pará referentes ao período de 2016 a 2021. O DETRAN-PA, por meio da Coordenadoria de Planejamento se empenha no tratamento para, coleta, organização, análise, interpretação e divulgação dos resultados sobre: frota veicular, condutores habilitados, infrações de trânsito, acidentes de trânsito e os principais indicadores relativizados pela população e veículos em formato de Anuário Web, o qual foi elaborado com base em dados fornecidos pelos Boletins de Ocorrência da Polícia Civil(PC-PA) e Boletins de Acidentes Rodoviários pelo Batalhão Rodoviário da Polícia Militar(BOAT-PM), em conjunto com os registros disponíveis nos Sistemas de Informação de Mortalidade(SIM) e morbidade do Ministério da Saúde. Foi estimado um Modelo de Previsão para a Frota de Veículos registrados no Estado do Pará, baseado na Metodologia Box e Jenkins (BOX e JENKIN, 1976 & MORETTIN e TOLOI, 2004). "
+fontsize: 14pt
+---
+
+
+
+
+<style>
+body{text-align: justify}
+</style>
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+<blockquote>
+  <p> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> **"No Trânsito Sua Responsabilidade**, </font> <font style = "vertical-align: inherit;"> **Salva Vidas"** </font> </font> </p>
+  <small> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;">  </font> </font> <cite title = ""> <font style = "vertical-align: inherit;"> <font style = "vertical-align:;"> **DETRAN-PA** </font> </font> </cite> </small>
+</blockquote>
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+
+```{r memoria, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, results='asis'}
+memory.limit (24576)
+library(distill)
+library(flexdashboard)
+library(xaringan)
+```
+
+
+```{r GERAL, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE
+)
+```
+
+
+
+
+# **PREFÁCIO**
+
+Os estudos estatísticos são ferramentas importantes para planejamento, coleta de dados, organização de informações, análise, interpretação e divulgação de resultados. Para o Departamento de Trânsito do Pará, a publicação do Anuário Estatístico de Trânsito mostra, também, como políticas públicas podem resultar em melhorias para a mobilidade urbana, obras de infraestrutura, campanhas educativas e ações de grande impacto na comunidade. Este levantamento reúne o trabalho de instituições e entidades que colaboram para dar continuidade ao registro do trânsito paraense.   
+
+A apresentação das informações sobre o trânsito de uma cidade, estado ou país precisam obrigatoriamente ser confiáveis, afinal, são nelas que se baseiam políticas públicas pensadas na mobilidade urbana, obras de infraestrutura diversas, campanhas educativas e ações de grande impacto na comunidade. Sem dados consistentes, a compreensão sobre o tema é equivocada e a solução de problemas fica ainda mais difícil. A preocupação primordial do DETRAN-PA, ao lançar a primeira edição do Anuário Estatístico de Trânsito, é a confiabilidade dos dados reunidos. Esta publicação pode contribuir para o trabalho dos gestores públicos, pesquisadores, estudantes e para o conhecimento da população em geral. O material é disponibilizado no site da instituição para manter a transparência dos serviços prestados no Estado do Pará com agilidade, eficiência e qualidade ao cidadão.
+
+Os relatórios ora disponibilizados nesta publicação, de modo geral, estão em dissonância com as necessidades estatísticas do DETRAN-PA, porém nosso material, salvo melhor juízo, é para ser utilizado em ações futuras contribuindo para um trânsito melhor e mais seguro.
+
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+# **INTRODUÇÃO**
+
+
+O Anuário Estatístico de 2020 expressa o resultado de uma ação de vanguarda, levada a efeito por uma administração competente e comprometida com a comunidade a que serve. Importante, não só como fonte de pesquisa e de informações, o Anuário é de extrema utilidade para facilitar o acesso a dados, por vezes difíceis de compilar, revelando-se, assim, um instrumento prático e eficiente.    
+
+
+O Anuário Estatístico de Trânsito do Detran-PA é um catálogo que engloba dados estatísticos sobre **Acidentes de Trânsito**, **Frota de Veículos**, **Habilitação**, **Infrações e outros indicadores**. O documento é elaborado anualmente, com informações divididas por municípios, e foi criado para ser uma referência e produzir ações que promovam a qualidade de vida dos cidadãos, condutores e pedestres. Com o Anuário, o Detran-PA objetiva transmitir o real cenário da realidade do trânsito Paraense e nortear as ações que tem como foco a redução da gravidade dos acidentes, além de ser uma ferramenta de pesquisa e estudo sobre trânsito e mobilidade urbana no Estado do Pará. O documento também está alinhado com o do Registro Nacional de Acidentes e Estatística de Trânsito (Renaest), vinculado a Secretaria Nacional de Trânsito. O Renaest disponibiliza informações estatísticas sobre os acidentes de trânsito em todo país, conforme a Resolução n° 808 de 2020.
+
+
+As fontes de informações que alimentam o Anuário Estatístico de Acidentes de Trânsito Web do DETRAN-PA, são:
+
+- [X] **RENAVAN**: o Registro Nacional de Veiculos Automotores é um sistema desenvolvido pelo SERPRO que cobre todo do Brasil, tendo como principal finalidade de registro de todos os veículos no País, efetuados pelas unidades do Detran em cada estado, e centralizados pela unidade central, o Denatran;
+- [X] **RENACH**: O Registro Nacional de Carteira de Habilitação é um sistema que registra todas as informações do condutor, controla ainda a emissão da CNH e da PID – Permissão Internacional para Dirigir, que é o documento necessário para que um brasileiro possa dirigir no exterior (nos países signatários da Convenção de Viena);
+- [X] **RENAINF**: O Registro Nacional de Infração de Trânsito é um sistema que registra e possibilita a notificação da autuação e da penalidade para as multas cometidas em unidade da federação diferente de registro do veículo. Integrado ao RENAVAN e ao RENACH; 
+- [X] **SEST**: o Sistema de Estatística de Sinistros de Trânsito, foi desenvolvido com interface web em linguagem de programação javascrip, com as bases de dados alocados em Banco do tipo Oracle.
+- [X] **SIGPLAN**: o Sistema de informações Gerenciais e de Planejamento do Plano Plurianual (PPA), contendo dados sobre Monitoramento, Avaliação e revisão do PPA e, contendo as ações do Governo do Estado do Pará;
+- [X] **SENTINELA**: o Sistema de informaçãoes contendo dados sobre Monitoramento Eletrônico via Radares espalhados de forma Estratégica nas Principais Rodovias Estaduais do Pará;
+
+
+**Figura 01**. Fluxo de Informação sobre as Fontes de Dados do Anuário Estatístico de Acidentes de Trânsito no Estado do Pará.
+
+
+```{r diagrama3, echo=FALSE, message=FALSE, warning=FALSE}
+library(htmltools)
+library(DiagrammeR)
+library(dplyr)
+library(htmlwidgets)
+library(sparkline)
+library(formattable)
+library(rhandsontable)
+library(DT)
+library(knitr)
+library(kableExtra)
+
+mermaid("
+graph LR
+A[MICRODADOS]-->B[COLETA]
+B-->C[CRÍTICA]
+C-->D{FONTES}
+D-->E[RENAVAN]
+D-->F[RENACH]
+D-->G[RENAINF]
+D-->H[SEST]
+D-->I[SIGPLAN]
+D-->J[SENTINELA]
+E-->K[ANUÁRIO WEB]
+F-->K[ANUÁRIO WEB]
+G-->K[ANUÁRIO WEB]
+H-->K[ANUÁRIO WEB]
+I-->K{ANUÁRIO WEB}
+J-->K(ANUÁRIO WEB)
+", width = 1200)
+```
+
+
+<div 
+class = "progress">
+<div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+# Justificativa e Importância do Anuário
+
+O controle e análise de estatísticas são fundamentais em qualquer área de atividade, pois eles que permitem identificar os principais problemas, além de definir prioridades e avaliar o resultado dos trabalhos executados. 
+
+No Brasil, valoriza-se pouco a coleta, a tabulação, o processamento, a análise e a utilização de dados, dando pouca importância a esses aspectos por falta de tradição e, também, muitas vezes por desconhecimento dessas informações para a orientação de trabalhos. O alto custo das pesquisas e a necessidade de recursos humanos e materiais contribuem para esta deficiência. Na área do trânsito não é diferente. Entretanto, o Código de Trânsito Brasileiro exige que seja feito o controle e análise de estatísticas e o município deve atender esta exigência, percebendo sua importância. Os dados de acidentes são fundamentais para orientar um programa de tratamento de pontos críticos, assim como, aferir os resultados das intervenções realizadas nas vias, elaborando-se estudos antes e depois das intervenções e projetos implantados. Dessa forma, é possível a correção eventual de falhas nas implantações realizadas, assim como, a aferição dos benefícios obtidos em função do custo das intervenções.
+
+Para reverter essa situação, dados confiáveis e precisos são necessários para aumentar a consciência sobre a magnitude real dos acidentes de trânsito e também para convencer os tomadores de decisão de que há uma demanda real e urgente por ações eficazes.
+
+Além disso, dados confiáveis e precisos também são necessários para identificar corretamente problemas, fatores de risco e áreas prioritárias, e para formular estratégias, definir metas e monitorar o desempenho. O diagnóstico e a gestão dos principais problemas relacionados a acidentes de trânsito devem ser continuados e baseados em dados reais, de maneira que ações adequadas sejam tomadas e os recursos sejam alocados apropriadamente. Sem isso, é impossível haver uma redução significativa e sustentável tanto do nível de exposição da população ao risco de acidentes quanto da gravidade dos mesmos.
+
+
+<div 
+class = "progress">
+<div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## Objetivos
+### Objetivo Geral
+
+Catalogar informações estatísticas, para compreensão das entidades públicas e privadas direta ou indiretamente ligadas ao trânsito, subsidiando o planejamento e avaliação das políticas públicas voltadas a redução de Sinistros de trânsito no âmbito do Pará.
+
+### Objetivos Específicos
+
+- Estabelecer uma sistemática para comunicação, registro, controle, consulta,
+acompanhamento e implantação de uma base regional de Estatísticas de Trânsito,
+- Subsidiar o desenvolvimento de estudos, pesquisas e ações que visem à melhoria da segurança viária no Pará;
+
+
+<div 
+class = "progress">
+<div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+# **METODOLOGIA** 
+
+## Caracterização da Àrea de Estudo
+
+A abrangência geográfia dos dados refrentes ao Anuário Estatístico, contempla as informações coletadas dos boletins de ocorrências policiais, sobre acidentes de trânsito em mais de 450 delegacias, distribuídos em 144 municípios do Estado do Pará.
+
+
+## Fonte de Coleta de Dados
+
+A coleta dos dados para este estudo foi feita junto às fontes secundárias oriundas do Sistema Integrado de Segurança Pública (SISP) e dos Boletins da Polícia Rodoviária Estadual, solicitados pelo Departamento Estadual de Trânsito (DETRAN-PA), através da Gerência de Análise e Estatística de Acidente (GAETRA) vinculado a Coordenadoria do Núcleo de Planejamento (CNP), que por meio do SISP consegue ter acesso às informações referentes à ocorrência de acidentes de trânsito no interior do Estado e na capital formando um banco de dados com informações sobre tipo de acidentes de trânsito, o(s) veículo(s) e a(s) vítima(s) envolvida(s) no(s) acidente(s) entre outras. Sendo que estas informações provêm das delegacias de polícia civil das cidades que estão conectadas on-line ao sistema.
+
+As Delegacias de Polícia Civil, por meio de seu Boletim de Ocorrência (BO), são as fontes que fornecem maior quantidade de registros de acidentes de trânsito no Estado do Pará. Nesta fonte é possível ter acesso às informações, eventos tanto em vias municipais, quanto em rodovias estaduais e federais, com vítima ou sem vítima.
+
+
+## Tratamento dos Dados  
+
+Após a transferência dos dados, estes são submetidos a um filtro, em
+que a maioria das ocorrências é selecionada para a crítica geral com, pelo menos, um problema de consistência interna.
+
+
+## Disseminação dos Dados 
+
+A disseminação de dados é feita pela divulgação de anuários, boletins e estudos para órgãos
+interessados nas políticas de trânsito, além da disponibilização das principais informações no sítio eletrônico
+do Detran-PA.
+
+
+## Revisão Final
+
+Após a conclusão de todas as etapas de crítica citadas anteriormente, são geradas algumas tabelas com o cruzamento das principais variáveis, para verificação final da consistência dos dados. Além disso, é feita uma crítica para a verificação de ocorrências duplicadas selecionando-se as placas de veículos envolvidos em acidentes que são repetidas e comparando-se o local, horário e endereço das ocorrências suspeitas. As ocorrências repetidas são excluídas do banco. 
+
+
+## Versão Web
+
+- Para criação do Anuário Estatístico em formato Web, foi criado um script em Linguagem de Programação **R-PROJECT versão 4.1.1** e um Ambiente de Desenvolvimento Integrado(IDE) chamado **Rstudio versão 1.4.1.7** com uso de vários pacotes, para o ambiente Windows. 
+
+- O Anuário em versão web, implementado em linguagem de programação R, possui a vantagem de ser um ambiente de computação estatistica no formato de projeto de software livre de código aberto (open source), ou seja, pode ser utilizado sem custos de licença (R DEVELOPMENT CORE TEAM, 2021).
+
+
+## **Sistema de Estatística de Acidentes de Trânsito (SEAT)**
+
+- Um sistema de acidentes de trânsito devem processar os dados coletados de maneira que estes possam ser analisados globalmente e decisões baseadas em dados reais possam ser tomadas
+
+- A implementação do SEAT permitir centralizar e armazenar todas as informações, para que sejam utilizadas como pesquisa de informação e favoreçam no processo de tomada de decisão pelas autoridades competentes na melhoria do sistema viário.
+
+
+### Fluxograma do SEAT
+
+Foi desenhado um processo padrão para coleta, análise, transferência e divulgação dos Dados entre DETRAN-PA e os diversos atores do trânsito. 
+
+
+**Figura 02**. Fluxograma das Processo de Acidentes de Trânsito no Estado do Pará.
+
+
+```{r diagrama1, echo=FALSE, message=FALSE, warning=FALSE}
+library(htmlwidgets)
+library(htmltools)
+library(DiagrammeR)
+mermaid("
+graph LR
+A{SEST}-->B[COLETA DE DADOS]
+B-->C[CRÍTICA DE DADOS]
+C-->D[ANÁLISE DE DADOS]
+D-->E{DISSEMINAÇÃO}
+E-->F[DETRAN'S]
+E-->G[CIRETRAN'S]
+E-->H[DEMUTRAN'S]
+E-->I[IMPRENSA]
+E-->J[SOCIEDADE]
+", width = 920)
+```
+
+
+## **Alinhamento do Anuário com RENAEST/ODS** 
+
+O Governo Federal lançou em 2018 a lei do PNATRANS, com objetivo de reduzir os óbitos no trânsito. A Lei nº 13.614/2018 criou **Plano Nacional de Redução de Mortes e Lesões no Trânsito (PNATRANS)**, acrescentando o artigo 326-A ao Código de Trânsito Brasileiro (CTB), e propôs um novo desafio para a gestão de trânsito no Brasil e para os orgãos integrados do Sistema Nacional de Trânsito (SNT).
+
+
+Em 2020, foi realizado um diagnóstico, envolvendo todas as Unidades Federativas com o objetivo de estabelecer uma metodologia padronizada de coleta e tratamento dos dados sobre acidentes de trânsito e uma gestão baseada em análises e melhoria do sistema de segurança viária para todo Brasil. A fim de definir dados mínimos sobre acidentes de forma padronizada, alinhar as Unidades Federativas sobre o processo e sobre a implantação do modelo e, por fim, garantir análises e atuação sobre as causas críticas com intuito de minimizar os acidentes de trânsito no país.
+
+
+A partir da base de dados de acidente que está sendo consolidada através do Anuário Estatístico do DETRAN-PA, as informações serão disponibilizadas por meio de um site interativo pela autarquia de trânsito para auxiliar no processo de análise e proposição de ações e políticas públicas para redução dos óbitos em acidentes de trânsito no Estado do Pará.
+
+
+Nesse contexto, o Anuário Estatístico de Acidentes de Trânsito, será construído em Alinhamento ao Manual de Gestão do **RENAEST (Resolução do CONTRAN Nº808/2020)**, utilizando metodologias factíveis com estatísticas de trânsito padronizada para todo o Território Nacional, e aos **Objetivos de Desenvolvimento Sustentáveis (Resolução da ONU Nº70/2015)** levando em conta os objetivos 3.6 (Até 2030, reduzir 50% as mortes e os ferimentos globais por acidentes em estradas) e 11.2 (até 2030, proporcionar o acesso a sistemas de transporte seguros, acessíveis, sustentáveis e a preço acessível para todos, melhorando a segurança rodoviária por meio da expansão dos transportes públicos, com especial atenção para as necessidades das pessoas em situação de vulnerabilidade, mulheres, crianças, pessoas com deficiência e idosos).
+
+
+<div 
+class = "progress">
+<div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+# **Conceitos e Definições Básicas** {.tabset .tabset-fade .tabset-pills}
+
+As definições apresentadas a seguir são descritos os principais termos técnicos retirados das Normas de Representação Tabular (IBGE/1993), o CTB(Anexo I, 1997), a ABTN NBR nº6067/2007 e ABNT NBR nº10697/2020, a Convenção Sobre o Trânsito Viário de Viena (Decreto nº86.714/1981) e Classificação Internacional de Doenças da Organização Mundial de Saúde (CID-10). 
+
+
+
+## **Acidentes de Trânsito**
+
+Todo evento não premeditado de que resulte dano em Veículo ou na sua Carga e/ou lesões em Pessoas e/ou Animais, em que pelo menos uma das partes está em movimento nas vias terrestres ou áreas abertas ao público. Pode originar-se, terminar ou envolver veículo parcialmente na via pública. 
+
+
+- [X] **Atropelamento**: Acidente em que o(s) pedestre(s) ou animal(is) sofre(m) o impacto de um veículo, estando pelo menos uma das partes em movimento.
+
+- [X] **Abalroamento**: Acidente em que um veículo é colhido lateralmente por outro veículo, também em movimento.
+
+- [X] **Capotamento**: Acidente em que o veículo gira sobre si mesmo, em qualquer sentido, chegando a ficar com as rodas para cima, imobilizando-se em qualquer posição.
+
+- [X] **Choque Com Objeto Fixo**: Acidente em que há impacto de um veículo contra qualquer objeto fixo ou móvel, mas sem movimento.
+
+- [X] **Colisão Entre Veículos**: Acidente em que um veículo em movimento sofre o impacto de outro veículo, também em movimento.
+
+- [X] **Queda De Ônibus**: Acidente em que há impacto em razão de queda livre dentro do ônibus, ou queda de pessoas ou cargas por ela transportadas.
+
+- [X] **Queda De Motocicleta**: Acidente em que há impacto em razão de queda livre da motocicleta, ou queda de pessoas.
+
+- [X] **Tombamento**: Acidente em que o veículo sai de sua posição normal, imobilizando-se sobre uma de suas laterais, sua frente ou sua traseira.
+
+- [X] **Outros**: Nos casos em que o acidente possui várias naturezas, ficou estabelecida a primeira para termos de classificação, visto que esta natureza gerou as demais. 
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Turnos**
+
+O horário dos acidentes é classificados em quatro turnos a saber:
+
+- [X] **Madrugada**: compreende todos os acidentes ocorridos a partir da hora 00:00 minutos até às 05:59min;
+- [X] **Manhã**: compreende todos os acidentes ocorridos a partir da hora 06:00 minutos até às 11:59min;
+- [X] **Tarde**: compreende todos os acidentes ocorridos a partir da hora 12:00 minutos até às 17:59min;
+- [X] **Noite**: compreende todos os acidentes ocorridos a partir da hora 18:00 minutos até às 23:59min;
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Vítimas**
+
+- [X] **Feridos Leves**: Toda pessoa que, em consequência do acidente, tenha sofrido lesões superficiais sem a necessidade de hospitalização.
+- [X] **Feridos Graves**: Vítimas de acidente cujos danos corporais (lesões) obriguem a um período de hospitalização superior a 24 horas.
+- [X] **Fatal**: É qualquer acidente de trânsito em que ocorra a Morte de, pelo menos uma pessoa, até 30 dias após a data do acidente.
+- [X] **Não Fatal**: É qualquer acidente de trânsito em que uma ou mais pessoas sofrem lesões, não ocasionando a morte de nenhuma delas até 30 dias após o acidente.
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Vias**
+
+- [X] **Via**: Superfície onde transitam veículos, pessoas e animais, compreendendo a pista, a calçada, o acostamento, ilha, e canteiro central, dividindo-se em competências: municipal, estadual e federal;  
+- [X] **Rodovia**: inclui todas as rodovias federais (BR), as rodovias do Pará (PA's) e Estradas Vicinais (VC).
+- [X] **Urbana**: Todas as vias do Pará, excluindo as Rodovias;
+- [X] **Rural**: Trecho de rodovia comprendido em área não edificada;
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Pedestre**
+
+- [X] Toda pessoa a pé que esteja utilizando-se de vias terrestres ou áreas abertas ao público, desde que não esteja em veículo a motor, trem, bonde, transporte animal ou outro veículo, ou sobre bicicleta ou sobre animal.
+
+
+<div 
+class = "progress">
+<div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Condutor**
+
+Toda pessoa que conduza um veículo automotor, ou de outro tipo, incluindo os ciclos, ou que guie por uma via, cabeças de gado isoladas, rebanho, bando ou manadas, ou animais de tiro, carga ou sela. Sendo habilitados nas seguintes categorias;  
+
+- [X] **A**: Todos os veículos automotores e elétricos, de duas ou três rodas, com ou sem carro lateral.
+- [X] **B**: Veículos automotores e elétricos, de quatro rodas cujo peso bruto total não exceda a três mil e quinhentos quilogramas e cuja lotação não exceda a 08 (oito) lugares, excluído o do
+motorista, contemplando a combinação de unidade acoplada, reboque, semi-reboque ou articulada, desde que atenda a lotação e capacidade de peso para a categoria.
+- [X] **C**: Todos os veículos automotores e elétricos utilizados em transporte de carga, cujo peso bruto total exceda a três mil e quinhentos quilogramas; tratores, máquinas agrícolas e de
+movimentação de cargas, motor-casa, combinação de veículos em que a unidade acoplada, reboque, semi-reboque ou articulada, não exceda a 6.000 kg de PBT e, todos os
+veículos abrangidos pela categoria "B".
+- [X] **D**: Veículos automotores e elétricos utilizados no transporte de passageiros, cuja lotação exceda a 08 (oito) lugares e, todos os veículos abrangidos nas categorias "B" e "C".
+- [X] **E**: Combinação de veículos em que a unidade tratora se enquadre nas categorias B, C ou D e cuja unidade acoplada, reboque, semirreboque, trailer ou articulada tenha 6.000 kg (seis
+mil quilogramas) ou mais de peso bruto total, ou cuja lotação exceda a 8 (oito) lugares e, todos os veículos abrangidos pelas categorias "B", "C" e "D".
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Veículos**
+
+- [X] **Automóvel**: Veículo destinado ao transporte de passageiros, com capacidade para até oito pessoas, mais o
+condutor; 
+
+- [X] **Bicicleta**: veículo de propulsão humana, dotado de duas rodas, cujo condutor dirige em posição montada, não
+sendo similar à motocicleta, motoneta e ciclomotor;
+
+- [X] **Caminhão**: Veículo destinado ao transporte de carga, podendo transportar dois passageiros, mais o condutor;
+
+- [X] **Caminhonete**: Veículo destinado ao transporte de carga com peso bruto total de até três mil e quinhentos
+quilogramas;
+
+- [X] **Camioneta**: Veículo misto destinado ao transporte de passageiros e carga no mesmo compartimento;
+
+- [X] **Ciclomotor**: Veículo de duas ou três rodas, provido de um motor de combustão interna, cuja cilindrada não exceda a cinquenta centímetros cúbicos (3,05 polegadas cúbicas) e cuja velocidade máxima de fabricação não exceda a cinquenta quilômetros por hora;
+
+- [X] **Micro-Ônibus**: Veículo automotor de transporte coletivo com capacidade oara até 20 passageiros. As vans se enquadram nessa categoria de veículos; 
+
+- [X] **Motocicleta**: Veículo automotor de duas rodas, dirigido por condutor em posição montada;
+
+- [X] **Motoneta**: Veículo automotor de duas rodas, dirigido por condutor em posição sentada;
+
+- [X] **Triciclo**: veículo automotor dotado de três rodas e pode ser fabricado nas versões com cabine aberta ou
+fechada;
+
+- [X] **Ônibus**:  veículo automotor de transporte coletivo com capacidade para mais de 20 passageiros, ainda que, em
+virtude de adaptações com vista à maior comodidade destes, transporte número menor;
+
+- [X] **Veículos de Tração Animal**:  veículos movidos à propulsão animal, entre os quais se encontram as **Carroças** e
+as **Charretes**;
+
+- [X] **Outros**: Qualquer veículo que não se enquadre nas definições acima. Exemplos: trator;
+
+<div 
+class = "progress">
+<div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Exames de Habilitação**
+
+Os exames de habilitação se dividem em teóricos e práticos;
+
+- [X] **Exame Teórico**: Existem três tipos de exames teóricos disponíveis: primeira habilitação, renovação e reciclagem. As
+provas teóricas têm duração de uma hora, são constituídas de 30 (trinta) questões de múltipla escolha em dois formatos: impressa ou eletrônica,
+dependendo do local do exame. 
+
+- [X] **Exame Prático**: Realizado em serviços de primeira habilitação, mudança de categoria, adição de categoria e após condenação judicial por delito de trânsito ou envolvimento em acidentes graves. O exame prático será realizado de acordo com a categoria de habilitação pretendida pelo candidato;
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Taxa De Internação**
+
+
+- [X] A taxa de internação hospitalar é o número de casos de internação pagas no Sistema Ùnico de Saúde por acidentes de trânsito, por 10 mil habitantes, na população residente do espaço geográfico, no ano considerado.
+
+$$ TIH_{(ATT)} = \frac{Nº \ de \ Internações }{ Nº \ de \ habitantes} \times \  10 \  mil \ (habitantes)  $$
+
+- [X] A internação da vítima de Acidente de Trânsito retrata a gravidade do evento e constitui parte considerável dos custos decorrentes desse agravo (SOARES e BARROS, 2006).
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Taxa De Óbito/Habitantes**
+
+
+- [X] A taxa de mortalidade por acidentes de trânsito é o número de óbitos por acidentes de transporte terreste, por 100 mil habitantes, na população residente do espaço geográfico, no ano considerado.
+
+
+$$ Taxa \ de \ Óbito_{(hab)} = \frac{Nº \ de \ Óbitos }{ Nº \ de \ habitantes}  \times  100 \  mil \ (hab.)  $$
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Taxa De Óbito/Veículos**
+
+- [X] A taxa de mortalidade por veículos é o número de óbitos por acidentes de transporte terreste, por 10 mil Veículos, na frora veicular registrada do espaço geográfico, no ano considerado.
+
+
+$$ Taxa \ de \ Óbito_{(veiculos)} = \frac{Nº \ de \ Óbitos }{ Nº \ de \ Veículos}  \times  \ 10 \ mil \ (veículos.)$$
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Convenções Técnicas**
+
+- [X] **(-)**: Dado numérico igual a zero não resultante de arredondamento;
+- [X] **NI**: Referem-se aos acidentes, vítimas ou atributos não informados.
+- [X] **(...)**: Dado numérico não disponível.
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+```{r Pacotes3, include=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+library(ggplot2)    
+library(plotly) 
+library(ggpubr) 
+library(gridExtra)
+library(ggthemes)
+library(GGally)
+library(kableExtra)
+library(gtsummary)
+library(xtable)
+library(tinytex)
+library(pander)
+library(PerformanceAnalytics)
+library(readxl)
+```
+
+
+
+# **Estatísticas de Veículos**{.tabset .tabset-fade .tabset-pills}
+
+## **TIPOS**
+
+**Tabela 01**. Frota de Veículos Registrados por Tipo, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+  
+  | **TIPOS**             |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |  $2021$       |
+  | :------------:        | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+  | `AUTOMÓVEL`           | 546.160       | 569.664       | 597.649        | 629.297        | 664.142       | 694.906       |
+  | `CAMINHÃO`            | 66.071        | 68.481        | 70.715         | 73.428         | 76.125        | 80.303        |
+  | `MOTOCICLETA`         | 976.500       | 1.027.387     | 1.077.286      | 1.130.123      | 1.180.497     | 1.236.288     |
+  | `CAMINHONETE`         | 179.357       | 190.066       | 202.645        | 200.971        | 215.415       | 233.019       |
+  | `ÔNIBUS`              | 23.946        | 24.428        | 25.094         | 25.828         | 26.884        | 28.181        |
+  | `REBOQUE`             | 35.325        | 37.830        | 40.479         | 44.053         | 48.053        | 52.927        |
+  | `OUTROS`              | 261           | 319           | 279            | 14.611         | 16.234        | 22.089        |
+  | `PARÁ`                | 1.827.620     | 1.918.175     | 2.014.147      | 2.118.592      | 2.227.350     | 2.347.713     |
+  **Fonte: DTI/DETRAN-PA**
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#library(dplyr) 
+#library(ggplot2)
+#library(plotly)
+#library(ggthemes)
+#library(gganimate)
+#library(rjson)
+
+#FROTA <- data.frame(Ano = c(2016, 2017, 2018, 2019, 2020, 2021),
+#                    frota = c(182760, 1918175,2014147,2118592,2227350,2347713))
+
+#graf1 <- ggplot(data = FROTA, aes(x = Ano, y = frota))+ 
+#  geom_step(size = 1.5, colour = "blue")+
+#  geom_point()+
+#  labs(title = "Frota de Veículos no Pará",
+#       x="Ano de registro", 
+#       y="Frota de Veículos")+
+#  theme_bw()+
+#  scale_colour_manual(values = "red")
+#ggplotly(graf1)
+
+
+```
+
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+## **CATEGORIAS**
+
+**Tabela 02**. Frota de Veículos Registrados por Categoria, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **CATEGORIAS**       |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        |  $2021$       |
+ | :------------:       | :-----------: | :------------: | :------------: | :------------: | :------------: |:------------: |
+ | `PARTICULAR`         |  1.725.726    |  1.813.635     |  1.911.203     |   2.016.486    |  2.106.789     | 2.205.663     |
+ | `ALUGUEL`            |   67.856      |  68.736        |   70.244       |   72.297       |  74.376        | 78.230        |
+ | `TÁXI`               |   15.380      |  17.145        |   19.439       |   21.339       |  22.733        | 23.226        |
+ | `OFICIAL`            |  20.421       |   21.625       |    23.161      |   23.765       |  24.138        | 24.460        |
+ | `TRANSPORTE`         |   11.891      |  12.132        |   12.607       |   13.125       |  13.505        | 13.927        |
+ | `APRENDISAGEM`       |   1.403       |  1.502         |   1.624        |   1.794        |  2.001         | 2.116         |
+ | `OUTROS`             |    51         |   52           |    55          |   56           |   58           | 91            |
+ | `PARÁ`               |  1.842.728    |  1.934.827     |  2.038.333     |  2.029.962     | 2.243.600      | 2.347.713     |
+ **Fonte: DTI/DETRAN-PA**
+
+
+
+
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+## **COMBUSTÍVEL**
+
+**Tabela 03**. Frota de Veículos Registrados por Tipo de Combustível, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **COMBUSTÍVEL**        |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        | $2021$        |
+ | :------------:         | :-----------: | :------------: | :------------: | :------------: | :------------: |:------------: |
+ | `ALCOOL`               |   23.586      |  23.601        |   23.623       |   23.640       |  23.643        |  |
+ | `DIESEL`               |   173.383     |  180.668       |   190.427      |  200.855       |  209.799       |  |
+ | `GASOLINA`             |    901.827    |  925.296       |  949.984       |  973.505       |  993.199       |  |
+ | `ALCOOL/GASOLINA`      |    704.827    |  764.166       |  830.940       |  904.467       |  967.038       |  |
+ | `OUTROS`               |     38.761    |   40.766       |  43.050        |  46.017        |  49.306        |  |
+ | `PARÁ`                 |   1.842.384   |  1.934.497     | 2.038.024      |  2.148.484     |  2.242.985     |  |
+ **Fonte: DTI/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+## **ESPÉCIE**
+
+**Tabela 04**. Frota de Veículos Registrados por Espécie, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ |  **ESPÉCIE**         |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        | $2021$        |
+ | :------------:       | :-----------: | :------------: | :------------: | :------------: | :------------: |:------------: |
+ | `CARGA`              |  168.087      |  176.629       |   178.057      |   183.738      |   189.422      |  |
+ | `MISTO`              |    57.376     |  60.898        |   65.256       |    69.804      |   73.056       |  |
+ | `ESPECIAL`           |   70.688      |  78.205        |  87.498        |    97.216      |   105.725      |  |
+ | `PASSAGEIRO`         |   1.5373.55   | 1.613.608      | 1.697.450      |   1.787.319    |   1.864.130    |  |
+ | `TRAÇÃO`             |   9.158       | 9.422          |  10.006        |   10.718       |   11.198       |  |
+ | `PARÁ`               |  1.842.664    | 1.938.762      | 2.038.267      |   2.148.795    |   2.243.531    |  |
+ **Fonte: DTI/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+## **FABRICAÇÃO**
+
+**Tabela 05**. Frota de Veículos Registrados por Ano de fabricação, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ |  **ANO DE FABRICAÇÃO**     |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        |$2021$         |
+ | :------------:             | :-----------: | :------------: | :------------: | :------------: | :------------: |:------------: |
+ | `0 |--- 1 ANO`             |  93.261       |  92.098        |  103.505       |  110.528       |  94.736        | |
+ | `2 |--- 5 ANOS`            |  610.768      |  576.566       |  473.059       |  420.949       |  531.477       | |
+ | `6 |--- 10 ANOS`           |  579.169      |  654.136       |  709.613       |  757.866       |  757.866       | |
+ |`11 |--- 15 ANOS`           |   249.907     | 292.083        |  359.643       |  415.083       |  415.083       | |
+ |`15 ou + ANOS`              |   309.628     |  348.948       |  392.516       |  444.438       |  444.438       | |
+ | `PARÁ`                     | 1.842.733     |  1.934.831     | 2.038.336      | 2.148.864      |  2.243.600     | |
+ **Fonte: DTI/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+## **SERVIÇOS DE VEÍCULOS**
+
+**Tabela 06**. Frota de Veículos Registrados por Tipos de Serviços, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ |  **TIPOS DE SERVIÇOS**          |     $2016$    |    $2017$      |    $2018$      |     $2019$      |  $2020$        |$2021$         |
+ | :------------:                  | :-----------: | :------------: | :------------: | :------------:  | :------------: |:------------: |
+ | `PRIMEIRO EMPLACAMENTO`         | 95.723        | 102.787        | 90.109         | 99.403          | 98.222         | 108.519       |
+ | `MUDANÇA DE JURISDIÇÃO`         | 54.159        | 60.687         | 64.093         | 68.873          | 56.426         | 136.419       |
+ | `TRANSFERÊNCIA DE PROPRIEDADE`  | 193.380       | 200.541        | 196.510        | 211.966         | 167. 026       | |
+ | `INCLUSÃO DE GRAVAME`           | 101.853       | 100.426        | 102.910        | 119.650         | 114.849        | |
+ | `BAIXA DE GRAVAME`              | 85.288        | 84.307         | 78.210         | 79.986          | 65.170         | |
+ | `PARÁ`                          | 530.403       | 548.748        | 531.832        | 579.878         | 332.467        | |
+ **Fonte: DTI/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **MUNICÍPIOS**
+
+**Tabela 07**. Frota de Veículos Registrados por Municípios, segundo Ano no Estado do Pará, até dezembro de 2021".
+
+
+
+```{r Leituratri, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(magrittr)
+library(tinytex)
+library(gt)
+library(data.table)
+library(knitr)
+library(kableExtra)
+library(formattable)
+library(rhandsontable)
+library(DT)
+library(downloadthis)
+
+setwd("C:/Users/mario.valente/Documents/GitHub_scripts/Anuario_Estatistico")
+anuario3 = read.csv("anuario3.csv",header=TRUE,sep=";")
+datatable(anuario3, 
+          plugins = 'natural',
+          extensions = 'Buttons',
+          options = list(dom = 'Blfrtip', buttons = c('copy','csv', 'excel', 'pdf', 'print'),
+          engthMenu = list(c(5,10,25,50,-1)), c(5,10,25,50,"All"),
+          pageLength = 5, 
+          autoWidth = TRUE),
+          rownames = FALSE,
+          class = 'cell-border compact stripe hover row-border order-column dt-body-right',
+          style = 'bootstrap',
+          editable = 'cell',
+          colnames = c('Municípios', 'Auto', 'Caminhonete', 'Moto', 'Ônibus', 'Micro', 'Reboque', 'Utilitário', 'Total'),
+          caption = 'Frota de Veículos Registrados por Municípios, segundo Ano no Estado do Pará, no período de 2016 a 2021')
+  
+
+```
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **PREVISÃO DE VEÍCULOS**
+
+Aplicou-se um Modelo de Previsão para a Frota de Veículos registrados no Estado do Pará, baseado na Metodologia Box e Jenkins BOX e JENKIN(1976); MORETTIN e TOLOI(2004). Foi utilizado a série mensal de veículos licenciados, durante o período de 2001 a 2021. O modelo selecionado foi um Autorregressivo Integrado de Media Móvel Sazonal (**SARIMA**), tendo como critérios de escolha os valores do Erro Percentual Absoluto Médio (**MAPE**), para geração de estimativas de Previsão pra 5 anos a frente. 
+
+
+**Tabela 08**. Previsão da Frota de Veículos Registrados por Municípios.".
+
+
+
+```{r Previsao, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tinytex)
+library(gt)
+library(data.table)
+library(knitr)
+library(kableExtra)
+library(formattable)
+library(rhandsontable)
+library(DT)
+library(downloadthis)
+
+setwd("C:/Users/mario.valente/Documents/GitHub_scripts/Anuario_Estatistico")
+Previsao = read.csv("prevfrota.csv",header=TRUE,sep=";")
+datatable(Previsao, 
+          plugins = 'natural',
+          extensions = 'Buttons',
+          options = list(dom = 'Blfrtip', buttons = c('copy','csv', 'excel', 'pdf', 'print'),
+          engthMenu = list(c(5,10,25,50,-1)), c(5,10,25,50,"All"),
+          pageLength = 5, 
+          autoWidth = TRUE),
+          rownames = FALSE,
+          class = 'cell-border compact stripe hover row-border order-column dt-body-right',
+          style = 'bootstrap',
+          editable = 'cell',
+          colnames = c('Municípios', '2022', '2023', '2024', '2025'),
+          caption = 'Previsao da Frota de Veículos Registrados por Municípios, no Estado do Pará, no período de 2022 a 2026')
+```
+
+
+O estudo e Previsão de crescimento de Automóveis e outros modais é, portanto, importante não somente no meio acadêmico ou empresarial, mas especialmente, no **Quesito Mobilidade**, pois o conhecimento da evolução de demanda por diferentes modais possibilita aos orgãos de trânsito municipal, estadual e federal o dimensionamento urbano, Desenvolvimento de Tráfego, e Estudo de Gestão da Velocidades.
+
+
+
+
+
+## **MAPA - FROTA**
+
+```{r MAPAS1, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse) # fazer manipulaÃ§Ã£o de bases de dados
+library(dplyr) 
+library(magrittr) # operador pipe
+library(readxl)
+library(readr)
+library(ggplot2) # biblioteca de graficos 
+library(plotly)  # fazer graficos dinamicos
+library(ggthemes) # incluir tthemas no grafico
+library(gganimate) # fazer graficos animados
+library(ggspatial)
+library(gifski)
+library(sf)
+library(rgdal) # para carregar o shape file
+library(rjson)
+library(leaflet) # fazer mapas interativos
+library(RColorBrewer) # paletas de cores
+library(colorspace)
+library(maptools)
+library(htmltools)
+library(htmlwidgets)
+library(curl)
+library(crul)
+library(ggpubr)
+library(devtools)
+library(electionsBR) # pacote com base de dados eleiÃ§Ãµes
+library(data.table)
+library(tmaptools)
+library(stars)
+library(maps)
+library(sp)
+library(tmap)
+library(gridExtra)
+library(raster)
+library(ggsn) 
+library(spData)
+library(covid19br)
+library(raster)
+library(geobr)
+library(leaflet)
+library(pander)
+
+
+
+BASE_PA = shapefile("C:/Users/mario.valente/Documents/GitHub_scripts/Anuario_Estatistico/PA_Municipios_2020.shp")
+COVID19_MAR_PA = read.csv("COVID19_MAR_PA.csv",header=TRUE,sep=";")
+
+#casosPA <- COVID19_MAR_PA
+#linhas  <- c(55,146)
+#casosPA  <-  casosPA[-linhas,]
+
+#colunas  <- c(3,4)
+#BASE_PA  <- BASE_PA[,-colunas]
+
+#colunas  <- c(1,2,4,7)
+#casosPA  <- casosPA[,-colunas]
+
+
+#class(BASE_PA)
+#class(COVID19_MAR_PA)
+
+#summary(BASE_PA)
+#summary(casosPA)
+
+#names(BASE_PA)
+#names(COVID19_MAR_PA)
+
+#head(BASE_PA)
+#head(COVID19_MAR_PA)
+
+
+
+MAPAACIDENTE1 <- merge(BASE_PA, COVID19_MAR_PA, by.x= "CD_MUN", by.y="CD_MUN")
+#names(MAPAACIDENTE)
+#head(MAPAACIDENTE)
+
+#Mapa_PA <- leaflet(MAPAACIDENTE) %>% 
+#  addTiles()
+#Mapa_PA %>% addPolygons()
+
+#Mapa_PA %>% addPolygons(
+#  weight = 1.5,
+#  opacity = 0.5,
+#  color = "blue",
+#  dashArray = 1,
+#  smoothFactor = 1.5,
+#  fillOpacity = 0,)
+
+#Categoria_Legenda <- c(0,10,20,50,100,500,Inf)
+#pal <- colorBin("YlOrRd", domain = MAPAACIDENTE$fatal, bins = Categoria_Legenda)
+
+#Mapa_PA %>% addPolygons(
+#  fillColor = ~pal(fatal),
+#  weight = 2.0,
+#  opacity = 1.0,
+#  color = "white",
+#  dashArray = 1,
+#  smoothFactor = 1.5,
+#  fillOpacity = 0.7,)
+
+#Mapa_PA %>% addPolygons(
+#  fillColor = ~pal(fatal),
+#  weight = 1.5,
+#  opacity = 1,
+#  color = "white",
+#  dashArray = "1",
+#  fillOpacity = 0.7,
+#  highlight = highlightOptions(
+#  weight = 5,
+#  color = "#03F",
+#  dashArray = "",
+#  fillOpacity = 0.7,
+#  smoothFactor = '1.5',
+#  bringToFront = TRUE))
+
+
+#label1 <- sprintf(
+#  "<strong>%s</strong></br>%g Acidentes</br>%g Vitima Fatal",
+#  MAPAACIDENTE$city, MAPAACIDENTE$confirmed, MAPAACIDENTE$fatal) %>% lapply(htmltools::HTML)
+
+
+#Mapa_PA %>% addPolygons(
+#  fillColor = ~pal(fatal),
+#  weight =2,
+#  opacity =1,
+#  color ="white",
+#  dashArray ="1",
+#  smoothFactor = 1.5,
+#  fillOpacity =0.7,
+#  highlight = highlightOptions(
+#   weight = 5,
+#    color = "#666",
+#    dashArray ="",
+#    fillOpacity =0.7,
+#    bringToFront =TRUE),
+#  label = label1,
+#  labelOptions = labelOptions(
+#    style = list("font-weight" = "normal", padding = "3px 8px"),
+#    textsize = "15px",
+#    direction= "auto"
+#  )) %>% addLegend(pal= pal,
+#                   values = ~deaths,
+#                   opacity = 0.5,
+#                   title = "Vitma Fatal no Transito",
+#                   position= "bottomright")
+
+
+
+#tmap_mode("plot")
+
+tm_shape(MAPAACIDENTE1)+
+  tm_fill()+
+  tm_borders(col="blue", alpha=.9)+
+  tm_layout(title="Frota Registrada")+
+  tm_dots()+
+  tm_polygons()+
+  tm_style("col_blind")+
+  tm_compass(type="4star", position=c("right", "top"), show.labels = 1,size=2.5)+
+#tm_grid()+
+  tm_scale_bar(breaks = c(0, 100, 200), text.size = 1)+
+  tm_layout(main.title = "Frota Registrada", main.title.position = 'center')+
+  tm_bubbles()+
+  tmap_mode("view")
+
+
+#tmap_save(filename = "Mapa_Para.png",width=20,height=20,units="cm",dpi=300)
+
+#plot(MAPARS[MAPARS$NM_MUN=='BelÃ©m',], 
+#    axes="TRUE",  
+#    main="Mapa do município Belém - PA",
+#    border=gray(0.5), 
+#   lwd=.5)
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+# **Estatísticas de Infração de Trânsito** {.tabset .tabset-fade .tabset-pills}
+## **GRAVIDADE**
+
+**Tabela 08**. Infrações de Trânsito Registradas, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **GRAVIDADE**             |     $2016$    |    $2017$       |    $2018$       |     $2019$      |   $2020$       |  $2021$       |
+ | :------------:            | :-----------: | :------------:  | :------------:  | :------------:  | :------------: |:------------: |
+ | `MÉDIA`                   |  481.152      | 397.937         |  41.504         |  55.542         |                | |
+ | `LEVE`                    |  15.830       | 17.999          |  49.369         |  34.154         |                | |
+ | `GRAVE`                   |  189.072      |  191.398        |  18.876         |  21.948         |                | |
+ | `GRAVÍSSIMA`              |  411.249      |  409.071        |  21.314         |  23.404         |                | |
+ | `PARÁ`                    |  1.101.921    | 1.016.766       |  1.105.662      | 967.937         |                | |
+ **Fonte: DTI/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+## **TOP 10 + INFRAÇÕES**
+
+**Tabela 09**. Infrações de Trânsito Registradas, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+| **TOP 10 INFRAÇÕES**                                            | $2016$   | $2017$   | $2018$    | $2019$   | $2020$ |$2021$ |
+|:------------                                                    | :----:   | :----:   | :----:    | :----:   | :----: |:----: |
+| `Transitar em Velocidade Superior a Maxima Permitida até 20%`   | 404.450  | 311.644  | 427.109   | 332.680  |        | |
+| `Avançar Sinal vermelho Parada Obrigatória`                     | 202.584  | 157.879  | 132.993   | 135.701  |        | |
+| `Transitar Velocidade Superior Permitida mais de 20% ate 50%`   |  79.162  |  63.119  |  95.985   |  63.544  |        | |
+| `Conduzir Motoc/Moton/ciclo c/ Capacete s/ Vis/oculos Proteção` |  32.948  |  72.278  |  31.105   |  64.618  |        | |
+| `Conduzir Mot/Moton/Ciclo Transp. Passag. Fora do Assento`      |  61.243  |  34.329  |  66.502   |  32.274  |        | |
+| `COND VC S/ REG. E DEVIDAM. LIC`                                |  30.869  |  40.101  |  31.600   |  28.808  |        | |
+| `Estacionar ao Lado ou Sobre Marcas de Canalização`             |  18.828  |  20.296  |  16.214   |  23.068  |        | |
+| `Transitar na Pista da Dir Reg Cir Excl Determ Veículo`         |  12.382  |   8.660  |  42.470   |  28.944  |        | |
+| `Estacionar em Fila Dupla`                                      |  11.500  |  11.074  |   9.966   |  14.995  |        | |
+| `Estacinar em Local/Horário Proibido Especie P/ Sinalização`    |  17.824  |  17.669  |  16.394   |  16.503  |        | |
+| `PARÁ`                                                          |1.101.921 |1.016.766 | 1.105.662 | 967.937  |        | |
+**Fonte: DTI/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+# **Indicadores De Acidentalidade** {.tabset .tabset-fade .tabset-pills}
+
+## **Taxas**
+
+**Tabela 10**. Taxas de Acidentalidade, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **TAXAS**                            |     $2016$    |    $2017$     |    $2018$      |     $2019$     |   $2020$       |$2021$         |
+ |:------------:                        | :-----------: |:------------: | :------------: | :------------: | :------------: |:------------: |
+ | `TAXA DE MOTORIZAÇÃO GERAL`          | 22.00         | 22.93         |  23.66         | 24.63          |  25.63         | |
+ | `TAXA DE MOTORIZAÇÃO DE MOTOCICLETA` | 11.73         | 12.25         |  12.63         | 13.11          |  13.55         | |
+ | `TAXA DE MOTORIZAÇÃO DE AUTOMÓVEL`   | 6.57          | 6.81          |  7.02          | 7.31           |  7.64          | |
+ | `TAXA DE CRESCIMENTO GERAL`          | 4.95          | 5.00          |  5.19          | 5.13           |   -            | |
+ | `TAXA DE ÓBITO/VEÍCULOS`             | 78.79         | 77.68         |  73.53         | 64.43          |  65.67         | |
+ | `TAXA DE ÓBITO/HABITANTES`           | 17.33         | 17.81         |  17.40         | 15.87          |  16.86         | |
+ | `TAXA DE INTERNAÇÃO/HABITANTES`      | 77.33         | 74.26         |  78.97         | 79.45          |   -            | |
+**Fonte: CNP/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+## **REGULARIZAÇÃO**
+
+**Tabela 11**. Percentual de Regularização, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **% de REGULARIZAÇÃO**         |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$        |$2021$         |
+ |:------------:                  | :-----------: |:------------: | :------------: | :------------: | :------------: |:------------: |
+ | `REGULARIZAÇÃO DE VEÍCULOS`    |   49,99       |    48,50      |   47,66        |    47,22       |   47,37        | |
+ | `REGULARIZAÇÃO DE CONDUTOR`    |   84,84       |    84,35      |   83,20        |    81,83       |   77,12        | |
+**Fonte: CNP/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+# **Estatísticas de Condutores** {.tabset .tabset-fade .tabset-pills}
+
+## **CATEGORIA DA CNH**
+
+**Tabela 12**. Condutores Registrados por Categoria, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **CATEGORIAS DA CNH**  |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | $2021$        |
+ | :------------:         | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `A`                    | 33.068        | 33.447        | 33.653         | 35.680         |               | |
+ | `AB`                   | 644.462       | 688.479       | 701.568        | 715.472        |               | |
+ | `AC`                   | 20.827        | 19.386        | 172.977        | 16.966         |               | |
+ | `AD`                   | 139.991       | 144.407       | 146.700        | 149.344        |               | |
+ | `AE`                   | 31.390        | 33.473        | 35.353         | 36.815         |               | |
+ | `B`                    | 349.643       | 361.766       | 370.886        | 376.787        |               | |
+ | `C`                    | 18.786        | 17.154        | 15.806         | 14.832         |               | |
+ | `D`                    | 46.053        | 43.995        | 42.172         | 40.864         |               | |
+ | `E`                    | 8.356         | 8.278         | 8.254          | 8.267          |               | |
+ | `PARÁ`                 | 1.292.576     | 1.350.385     | 1.372.399      | 1.395.027      |               | |
+**Fonte: DTI/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+## **FAIXA ETÁRIA**
+
+**Tabela 13**. Condutores Registrados por Idade, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **Faixa Etária**      |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:        | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `18 |--- 24`          | 110.742       | 109.001       | 98.859         | 84.363         |               | |
+ | `25 |--- 34`          | 377.575       | 381.533       | 377.469        | 367.867        |               | |
+ | `35 |--- 44`          | 365.322       | 388.145       | 400.591        | 414.033        |               | |
+ | `45 |--- 54`          | 277.366       | 241.023       | 249.057        | 262.949        |               | |
+ | `55 |--- 64`          | 131.731       | 141.270       | 147.857        | 156.949        |               | |
+ | `65 ou +`             | 79.857        | 89.439        | 98.581         | 109.166        |               | |
+ | `PARÁ`                | 1.342.593     | 1.350.411     | 1.372.414      | 1.395.027      |               | |
+**Fonte: DTI/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **SEXO**
+
+**Tabela 14**. Condutores Registrados por Sexo, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **SEXO**              |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | $2021$        |
+ | :------------:        | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `MASCULINO`           | 960.894       | 997.319       | 1.005.248      | 1.019.407      |               |               |
+ | `FEMININO`            | 169.754       | 353.092       | 367.166        | 375.620        |               |               |
+ | `PARÁ`                | 1.130.648     | 1.350.411     | 1.372.414      | 1.395.027      |  1.419.756    | 1.458.577     |
+**Fonte: DTI/DETRAN-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+## **SERVIÇOS DE CNH**
+
+**Tabela 15**. Condutores Registrados por Tipos de Serviços, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ |  **TIPOS DE SERVIÇOS DE CNH**  |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        |$2021$         |
+ | :------------:                 | :-----------: | :------------: | :------------: | :------------: | :------------: |:------------: |
+ | `1º HABILITAÇÃO`               | 79.440        | 72.082         | 50.696         |  45.909        | 60.828         | 45.327        |
+ | `2º VIA DA CNH`                | 23.870        | 27.313         | 21.535         |  20.219        | 14.517         | |
+ | `RENOVAÇÃO`                    | 164.103       | 182.404        | 195.499        |  178.435       | 186.102        | |
+ | `MUDANÇA DE CATEGORIA`         | 17.474        | 17.595         | 13.870         |  13.128        | 15.181         | |
+ | `TRANSFERÊNCIA DE JURISDIÇÃO`  | 13.487        | 13.224         | 12.740         |  14.280        | 13.566         | |
+ | `CNH DEFINITIVA`               | 75.313        | 72.538         | 65.443         |  51.114        | 32.115         | |
+ | `PARÁ`                         | 373.687       | 385.156        | 359.783        |  323.085       | 322.309        | |
+ **Fonte: DTI/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **Exames**
+
+**Tabela 16**. Exames Médicos e Psicotécnicos, segundo Tipo, no Estado do Pará, no período de 2016 a 2021.
+
+ |  **EXAMES**                    |     $2016$    |    $2017$      |    $2018$      |     $2019$     |  $2020$        |$2021$         |
+ | :------------:                 | :-----------: | :------------: | :------------: | :------------: | :------------: |:------------: |
+ | `EXAME MÉDICO`                 | 265.288       | 280.022        | 263.379        | 254.703        | 290.956        |               |
+ |`EXAME PSICOTÉCNICO`            | 141.279       | 145.279        | 122.529        | 125.764        | 163.224        |               |
+ | `EXAME TEÓRICO`                | 16.649        | 14.542         | 11.146         | 7.671          | 7.380          |               |
+ |`EXAME PRÁTICO DE MOTOCICLETA`  | 76.460        | 69.286         | 48.594         | 43.765         | 51.351         |               |
+ |`EXAME PRÁTICO DE AUTOMÓVEL`    | 19.535        | 17.879         | 13.866         | 13.178         | 14.437         |               |
+ |`PARÁ`                          | 519.211       | 527.008        | 459.514        | 445.081        | 527.348        |               |
+ **Fonte: DTI/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **MUNICÍPIOS**
+
+**Tabela 17**. Condutores Registrados por Municípios, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+
+```{r condutor1, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tinytex)
+library(gt)
+library(data.table)
+library(knitr)
+library(kableExtra)
+library(formattable)
+library(DT)
+library(downloadthis)
+
+setwd("C:/Users/mario.valente/Documents/GitHub_scripts/Anuario_Estatistico")
+condutor1 = read.csv("condutor1.csv",header=TRUE,sep=";")
+datatable(condutor1, 
+          plugins = 'natural',
+          extensions = 'Buttons',
+          options = list(dom = 'Blfrtip', buttons = c('copy','csv', 'excel', 'pdf', 'print'),
+          engthMenu = list(c(5,10,25,50,-1)), c(5,10,25,50,"All"),
+          pageLength = 5, 
+          autoWidth = TRUE),
+          rownames = FALSE,
+          class = 'cell-border compact stripe hover row-border order-column dt-body-right',
+          style = 'bootstrap',
+          editable = 'cell',
+          colnames = c('Municípios', 'Ano 2016', 'Ano 2017', 'Ano 2018', 'Ano 2019', 'Total'),
+          caption = 'Condutores Registrados por Municípios, segundo Ano no Estado do Pará, no período de 2016 a 2021')
+```
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+## **MAPA - CONDUTORES**
+
+```{r MAPAS5, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse) # fazer manipulaÃ§Ã£o de bases de dados
+library(dplyr) 
+library(magrittr) # operador pipe
+library(readxl)
+library(readr)
+library(ggplot2) # biblioteca de graficos 
+library(plotly)  # fazer graficos dinamicos
+library(ggthemes) # incluir tthemas no grafico
+library(gganimate) # fazer graficos animados
+library(ggspatial)
+library(gifski)
+library(sf)
+library(rgdal) # para carregar o shape file
+library(rjson)
+library(leaflet) # fazer mapas interativos
+library(RColorBrewer) # paletas de cores
+library(colorspace)
+library(maptools)
+library(htmltools)
+library(htmlwidgets)
+library(curl)
+library(crul)
+library(ggpubr)
+library(devtools)
+library(electionsBR) # pacote com base de dados eleiÃ§Ãµes
+library(data.table)
+library(tmaptools)
+library(stars)
+library(maps)
+library(sp)
+library(tmap)
+library(gridExtra)
+library(raster)
+library(ggsn) 
+library(spData)
+library(covid19br)
+library(raster)
+library(geobr)
+library(leaflet)
+library(pander)
+
+
+
+
+BASE_PA3 = shapefile("C:/Users/mario.valente/Documents/GitHub_scripts/Anuario_Estatistico/PA_Municipios_2020.shp")
+CNH = read.csv("mapa_condutor.csv",header=TRUE,sep=";")
+
+MAPACONDUTOR <- merge(BASE_PA3, CNH, by.x= "CD_MUN", by.y="CD_MUN")
+
+
+tm_shape(MAPACONDUTOR)+
+  tm_fill()+
+  tm_borders(col="blue", alpha=.9)+
+  tm_layout(title="CNH Registrdo")+
+  tm_dots()+
+  tm_polygons()+
+  tm_style("col_blind")+
+  tm_compass(type="4star", position=c("right", "top"), show.labels = 1,size=2.5)+
+#tm_grid()+
+  tm_scale_bar(breaks = c(0, 100, 200), text.size = 1)+
+  tm_layout(main.title = "CNH Registrada", main.title.position = 'center')+
+  tm_bubbles()+
+  tmap_mode("view")
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# **Estatísticas de Acidentes de Trânsito** {.tabset .tabset-fade .tabset-pills}
+
+## **TIPOS**
+
+**Tabela 18**. Acidentes de Trânsito por Tipo, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **TIPOS**                  |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:             | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `ABALROAMENTO`             | 1.060         | 1.130         | 1.264          |  941           | 681           | 79            |
+ | `ATROPELAMENTO`            | 2.078         | 1.862         | 1.418          | 1.489          | 644           | 434           |
+ | `CAPOTAMENTO`              | 503           | 627           | 675            | 541            | 413           | 338           |
+ | `CHOQUE COM OBJETO FIXO`   | 959           | 955           | 955            | 950            | 1.284         | 963           |
+ | `COLISÃO COM BICICLETA`    | 1.282         | 1.121         | 843            | 852            | 468           | 153           |
+ | `COLISÃO ENTRE VEÍCULOS`   | 18.942        | 19.421        | 21.068         | 20.275         | 16.101        | 13.293        |
+ | `QUEDA DE MOTOCICLETA`     | 5.325         | 5.247         | 4.208          | 4.931          | 2.629         | 1.802         |
+ | `QUEDA DE ÔNIBUS`          | 227           | 244           | 164            | 150            | 59            | 42            |
+ | `TOMBAMENTO`               | 344           | 404           | 525            | 432            | 326           | 260           |
+ | `OUTROS`                   | 115           | 75            | 84             | 105            | 113           | 10            |
+ | `PARÁ`                     | 31.023        | 31.316        | 31.384         | 30.666         | 28.435        | 17.374        |
+**Fonte: SISP/PC-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **MESES**
+
+
+**Tabela 19**. Acidentes de Trânsito por Mês, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **MESES**        |     $2016$     |    $2017$      |    $2018$       |     $2019$     |  $2020$        |$2021$         |
+ | :------------:   | :-----------:  |:------------:  | :------------:  | :------------: |:------------:  |:------------: |
+ | `JANEIRO`        | 2.858          | 2.458          | 2.859           | 2.795          | 2.274          | 3.007         |
+ | `FEVEREIRO`      | 2.557          | 2.194          | 2.901           | 2.706          | 2.789          | 2.592         |
+ | `MARÇO`          | 2.242          | 2.365          | 2.972           | 2.715          | 1.969          | 2.462         | 
+ | `ABRIL`          | 2.457          | 2.193          | 2.637           | 2.500          | 1.941          | 2.226         |
+ | `MAIO`           | 2.680          | 2.677          | 2.770           | 2.689          | 2.010          | 2.188         |
+ | `JUNHO`          | 2.662          | 3.183          | 2.441           | 2.690          | 2.228          | 2.193         |
+ | `JULHO`          | 2.525          | 2.813          | 2.568           | 2.471          | 2.309          | 1.381         |
+ | `AGOSTO`         | 2.626          | 2.525          | 3.120           | 2.450          | 2.310          | 889           | 
+ | `SETEMBRO`       | 2.724          | 3.032          | 2.885           | 2.605          | 2.314          | 195           | 
+ | `OUTUBRO`        | 2.810          | 3.064          | 2.151           | 2.516          | 2.486          | 140           |
+ | `NOVEMBRO`       | 2.421          | 2.444          | 2.176           | 2.225          | 2.634          | 89            |
+ | `DEZEMBRO`       | 2.461          | 2.368          | 1.904           | 2.304          | 3.174          | 13            |
+ | `PARÁ`           | 31.026         | 31.316         | 31.384          | 30.666         | 28.435         | 17.374        |
+**Fonte: SISP/PC-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **DIAS DA SEMANA**
+
+
+**Tabela 20**. Acidentes de Trânsito por Dias da Semana, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **DIAS D SEMANA**  |     $2016$     |    $2017$      |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:     | :-----------:  |:------------:  | :------------: | :------------: |:------------: |:------------: |
+ | `DOMINGO`          | 5.349          |  5.242         |  4.420         | 4.313          | 	3.383       | 2.305         |
+ | `SEGUNDA-FEIRA`    | 4.309          |  4.491         |  4.921         | 4.607          |   4.024       | 2.701         |
+ | `TERÇA-FEIRA`      | 3.897          |  4.008         |  4.381         | 4.307          | 	3.904       | 2.418         |
+ | `QUARTA-FEIRA`     | 3.929          |  4.133         |  4.299         | 4.247          |  	4.150       | 2.451         |
+ | `QUINTA-FEIRA`     | 3.870          |  4.159         |  4.180         | 4.199          |   4.009       | 2.346         |
+ | `SEXTA-FEIRA`      | 4.696          |  4.490         |  4.732         | 4.586          |   4.378       | 2.658         |
+ | `SABADO`           | 4.973          |  4.793         |  4.451         | 4.407          |   4.141       | 2.503         |
+ | `PARÁ`             | 31.023         |  31.316        |  31.384        | 30.666         |  27.989       | 17.374        |
+ **Fonte: SISP/PC-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+			
+## **TURNO**
+
+
+**Tabela 21**. Acidentes de Trânsito por Turno, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **TURNO**            |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:       | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `00:01 |--- 05:59`   |     2.525     |    2.547      |     2.305      |   1.674        |   1.915       | 1.102         |
+ | `06:00 |--- 11:59`   |     9.106     |    9.270      |     9.667      |   7.063        |   9.120       | 5.748         |
+ | `12:00 |--- 17:59`   |     10.456    |    10.490     |     10.917     |   8.183        |   10.238      | 6.245         |
+ | `18:00 |--- 23:59`   |     8.686     |    8.772      |     8.318      |   5.794        |   7.166       | 4.287         |
+ | `PARÁ`               |     30.773    |    31.079     |    31.207      |   22.714       |   28.439      | 17.382        |
+**Fonte: SISP/PC-PA**
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+## **FERIDOS**
+
+
+**Tabela 22**. Acidentes de Trânsito por Tipos de Vítimas, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **FERIDOS**          |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:       | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `PEDESTRE`           | 1.985         | 1.717         | 1.720          |  1.639         | 420           |   146         |
+ | `PASSAGEIRO`         | 4.096         | 3.506         | 3.735          |  3.310         | 2.716         |   714         |
+ | `CICLISTA`           | 1.036         | 896           | 895            |  731           | 483           |   195         |
+ | `CONDUTOR`           | 660           | 601           | 609            |  558           | 1.329         |   7.319       |
+ | `MOTOCICLISTA`       | 12.189        | 12.434        | 12.058         |  11.777        | 12.626        |   6.045       |
+ | `PARÁ`               | 19.933        | 19.154        | 19.017         |  18.015        |  17.578       |   14.429      |
+**Fonte: SISP/PC-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **MORTOS**
+
+**Tabela 23**. Acidentes de Trânsito por Tipos de Vítimas Fatal, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **MORTOS**           |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:       | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `PEDESTRE`           | 202           | 228           | 188            |  131           | 184           |    169        |
+ | `PASSAGEIRO`         | 264           | 239           | 217            |  212           | 215           |    138        |
+ | `CICLISTA`           | 58            | 66            | 55             |  52            | 71            |    58         |
+ | `CONDUTOR`           | 107           | 90            | 100            |  94            | 121           |   107         |
+ | `MOTOCICLISTA`       | 834           | 819           | 842            |  833           | 757           |    602        |
+ | `PARÁ`               | 1.465         | 1.442         | 1.402          |  1.322         | 1.348         |    1.074      |
+**Fonte: SISP/PC-PA**
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **PRINCIPAIS CAUSAS**
+
+**Tabela 24**. Principais Causas de Acidentes de Trânsito, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **PRINCIPAIS CAUSAS**                |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:                       | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `FALTA DE ATENÇÃO À CONDUÇÃO`        |  5.960        | 6.513         | 9.106          |  8.387         | 15.397        | 10.102        |
+ | `PERDEU O CONTROLE`                  |  3.591        | 3.068         | 2.872          |  2.725         | 1.300         | 762           |
+ | `MANOBRA IRREGULAR`                  |  2.232        | 1.963         | 1.906          |  1.885         | 820           | 1.315         |
+ | `DESREIPEITO A PREFERENCIAL`         |  2.445        | 1.930         | 1.789          |  1.664         | 473           |  176          |
+ | `NÃO GUARDAR DISTÂNCIA DE SEGURANÇA` |  1.188        | 1.191         | 1.236          |  1.110         | 782           |  220          |
+ | `COLISÃO LATERAL`                    |  1.279        | 1.172         | 873            |  812           | 1.952         |   514         |
+ | `CONTRA MÃO`                         |  1.225        | 1.049         | 752            |  702           | 405           | 195           |
+ | `ANIMAIS NA PISTA`                   |  1.100        | 1.035         | 837            |  799           | 548           | 174           |
+ | `EXCESSO DE VELOCIDADE`              |  773          | 911           | 1012           |  1350          | 693           | 336           |
+ | `OUTROS`                             |  11.230       | 12.484        | 11.001         |  11.232        |  953          | 357           |
+ | `PARÁ`                               | 31.023        | 31.316        | 31.384         |  30.666        | 23.323        | 14.151        |
+**Fonte: SISP/PC-PA**
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **MUNICÍPIOS**
+
+**Tabela 25**. Acidentes de Trânsito por Municípios, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+```{r acidente1, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tinytex)
+library(gt)
+library(data.table)
+library(knitr)
+library(kableExtra)
+library(formattable)
+library(DT)
+library(downloadthis)
+
+setwd("C:/Users/mario.valente/Documents/GitHub_scripts/Anuario_Estatistico")
+acidente1 = read.csv("acidente1.csv",header=TRUE,sep=";")
+datatable(acidente1, 
+          plugins = 'natural',
+          extensions = 'Buttons',
+          options = list(dom = 'Blfrtip', buttons = c('copy','csv', 'excel', 'pdf', 'print'),
+          engthMenu = list(c(5,10,25,50,-1)), c(5,10,25,50,"All"),
+          pageLength = 5, 
+          autoWidth = TRUE),
+          rownames = FALSE,
+          class = 'cell-border compact stripe hover row-border order-column dt-body-right',
+          style = 'bootstrap',
+          editable = 'cell',
+          colnames = c('Municípios', 'Ano 2016', 'Ano 2017', 'Ano 2018', 'Ano 2019', 'Ano 2020', 'Ano 2021', 'Total'),
+          caption = 'Acidentes de Trânsito por Municípios, segundo Ano no Estado do Pará, no período de 2016 a 2021')
+```
+
+
+## **MAPA - ACIDENTES**
+
+```{r MAPAS3, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse) # fazer manipulaÃ§Ã£o de bases de dados
+library(dplyr) 
+library(magrittr) # operador pipe
+library(readxl)
+library(readr)
+library(ggplot2) # biblioteca de graficos 
+library(plotly)  # fazer graficos dinamicos
+library(ggthemes) # incluir tthemas no grafico
+library(gganimate) # fazer graficos animados
+library(ggspatial)
+library(gifski)
+library(sf)
+library(rgdal) # para carregar o shape file
+library(rjson)
+library(leaflet) # fazer mapas interativos
+library(RColorBrewer) # paletas de cores
+library(colorspace)
+library(maptools)
+library(htmltools)
+library(htmlwidgets)
+library(curl)
+library(crul)
+library(ggpubr)
+library(devtools)
+library(electionsBR) # pacote com base de dados eleiÃ§Ãµes
+library(data.table)
+library(tmaptools)
+library(stars)
+library(maps)
+library(sp)
+library(tmap)
+library(gridExtra)
+library(raster)
+library(ggsn) 
+library(spData)
+library(covid19br)
+library(raster)
+library(geobr)
+library(leaflet)
+library(pander)
+
+
+
+
+
+
+BASE_PA2 = shapefile("C:/Users/mario.valente/Documents/GitHub_scripts/Anuario_Estatistico/PA_Municipios_2020.shp")
+ACIDENTES = read.csv("acidentes.csv",header=TRUE,sep=";")
+
+#casosPA <- COVID19_MAR_PA
+#linhas  <- c(55,146)
+#casosPA  <-  casosPA[-linhas,]
+
+#colunas  <- c(3,4)
+#BASE_PA  <- BASE_PA[,-colunas]
+
+#colunas  <- c(1,2,4,7)
+#casosPA  <- casosPA[,-colunas]
+
+
+#class(BASE_PA)
+#class(COVID19_MAR_PA)
+
+#summary(BASE_PA)
+#summary(casosPA)
+
+#names(BASE_PA)
+#names(COVID19_MAR_PA)
+
+#head(BASE_PA)
+#head(COVID19_MAR_PA)
+
+
+
+
+
+MAPAACIDENTE2 <- merge(BASE_PA, ACIDENTES, by.x= "CD_MUN", by.y="CD_MUN")
+#names(MAPAACIDENTE)
+#head(MAPAACIDENTE)
+
+#Mapa_PA <- leaflet(MAPAACIDENTE) %>% 
+#  addTiles()
+#Mapa_PA %>% addPolygons()
+
+#Mapa_PA %>% addPolygons(
+#  weight = 1.5,
+#  opacity = 0.5,
+#  color = "blue",
+#  dashArray = 1,
+#  smoothFactor = 1.5,
+#  fillOpacity = 0,)
+
+#Categoria_Legenda <- c(0,10,20,50,100,500,Inf)
+#pal <- colorBin("YlOrRd", domain = MAPAACIDENTE$fatal, bins = Categoria_Legenda)
+
+#Mapa_PA %>% addPolygons(
+#  fillColor = ~pal(fatal),
+#  weight = 2.0,
+#  opacity = 1.0,
+#  color = "white",
+#  dashArray = 1,
+#  smoothFactor = 1.5,
+#  fillOpacity = 0.7,)
+
+#Mapa_PA %>% addPolygons(
+#  fillColor = ~pal(fatal),
+#  weight = 1.5,
+#  opacity = 1,
+#  color = "white",
+#  dashArray = "1",
+#  fillOpacity = 0.7,
+#  highlight = highlightOptions(
+#  weight = 5,
+#  color = "#03F",
+#  dashArray = "",
+#  fillOpacity = 0.7,
+#  smoothFactor = '1.5',
+#  bringToFront = TRUE))
+
+
+#label1 <- sprintf(
+#  "<strong>%s</strong></br>%g Acidentes</br>%g Vitima Fatal",
+#  MAPAACIDENTE$city, MAPAACIDENTE$confirmed, MAPAACIDENTE$fatal) %>% lapply(htmltools::HTML)
+
+
+#Mapa_PA %>% addPolygons(
+#  fillColor = ~pal(fatal),
+#  weight =2,
+#  opacity =1,
+#  color ="white",
+#  dashArray ="1",
+#  smoothFactor = 1.5,
+#  fillOpacity =0.7,
+#  highlight = highlightOptions(
+#   weight = 5,
+#    color = "#666",
+#    dashArray ="",
+#    fillOpacity =0.7,
+#    bringToFront =TRUE),
+#  label = label1,
+#  labelOptions = labelOptions(
+#    style = list("font-weight" = "normal", padding = "3px 8px"),
+#    textsize = "15px",
+#    direction= "auto"
+#  )) %>% addLegend(pal= pal,
+#                   values = ~deaths,
+#                   opacity = 0.5,
+#                   title = "Vitma Fatal no Transito",
+#                   position= "bottomright")
+
+
+
+#tmap_mode("plot")
+
+tm_shape(MAPAACIDENTE2)+
+  tm_fill()+
+  tm_borders(col="blue", alpha=.9)+
+  tm_layout(title="Frota Registrada")+
+  tm_dots()+
+  tm_polygons()+
+  tm_style("col_blind")+
+  tm_compass(type="4star", position=c("right", "top"), show.labels = 1,size=2.5)+
+#tm_grid()+
+  tm_scale_bar(breaks = c(0, 100, 200), text.size = 1)+
+  tm_layout(main.title = "Frota Registrada", main.title.position = 'center')+
+  tm_bubbles()+
+  tmap_mode("view")
+
+
+#tmap_save(filename = "Mapa_Para.png",width=20,height=20,units="cm",dpi=300)
+
+#plot(MAPARS[MAPARS$NM_MUN=='BelÃ©m',], 
+#    axes="TRUE",  
+#    main="Mapa do município Belém - PA",
+#    border=gray(0.5), 
+#   lwd=.5)
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+# **Estatísticas de Educação de Trânsito** {.tabset .tabset-fade .tabset-pills}
+## **TERPAZ**
+
+**Tabela 26**. Atividades de Educação de Trânsito no TERPAZ, segundo Ano no Estado do Pará, no período de 2016 a 2020.
+
+ | **AÇÕES EDUCATIVAS TERPAZ**              |     $2019$     |  $2020$        |$2021$         |
+ | :------------:                           | :------------: |:------------:  |:------------: |
+ | `AÇÕES REALIZADAS`                       |    64          |  109           |               |
+ | `PALESTRAS EDUCATIVAS`                   |    93          |  195           |               |
+ | `CRIANÇAS ATENDIDAS`                     |    3.328       | 7.846          |               |
+ | `ADULTOS ATENDIDOS`                      |    740         | 1.197          |               |
+ | `PARÁ`                                   |    4.225       | 9.347          |               |
+**Fonte: CED/DTO/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **PALESTRAS**
+
+**Tabela 27**. Palestras e Curso de Capcitação em Educação de Trânsito por Tipos, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **PALESTRAS/CURSOS**              |     $2019$     |  $2020$       |$2021$         |
+ | :------------:                    | :------------: |:------------: |:------------: |
+ | `PALESTRAS EM EMPRESAS`           |  14            |    21         |               |
+ | `PALESTRAS CUMPRIDORES/TJE`       |  37            |   18          |               |
+ | `CURSO DE MOTOTAXISTA`            |  23            |   9           |               |
+ | `ADULTOS ATENDIDOS/EMPRESAS`      |  1.074         |   688         |               |
+ | `ADULTOS ATENDIDAS/TJE`           |  152           |   52          |               |
+ | `MOTOTAXISTAS FORMADOS`           |  588           |   538         |               |
+ | `PARÁ`                            |  1.888         |   1.326       |               |
+**Fonte: CED/DTO/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **OPERAÇÕES SAZONAIS**
+
+**Tabela 28**. Operações Sazonais em Educação de Trânsito por Tipos, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **OPERAÇÕES SAZONAIS**            |     $2019$     |  $2020$       | $2021$        |
+ | :------------:                    | :------------: |:------------: |:------------: |
+ | `Paradas Educativas`              |  63            |   204         |               |
+ | `Veiculos Abordados`              |  9.512         |   39.519      |               |
+ | `Adultos Orientados`              |  32.307        |   97.629      |               |
+ | `Crianças Atendidas`              |  3.350         |   1.366       |               |
+ | `Ações Realizadas/Praias`         |  24            |   8           |               |
+ | `Pessoas Orientadas/Praias`       |  3.453         |  1.358        |               |
+ | `Barracas Atendidas/Praias`       |  25            |  95           |               |
+ | `PARÁ`                            |  48.734        |  139.839      |               |
+**Fonte: CED/DTO/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **AÇÕES EDUCATIVAS REGIONALIZADAS**
+
+**Tabela 29**. Ações de Educação de Trânsito por Região de Integração, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **REGIÃO DE INTEGRAÇÃO**             |     $2016$    |     $2017$    |  $2018$       | $2019$       | $2020$       |$2021$        |
+ | :------------:                       | :-----------: |:-----------:  | :-----------: |:-----------: |:-----------: |:-----------: |
+ | `ARAGUAIA`                           |  -            |    29         |   25          |    12        |   21         |  20          |
+ | `BAIXO AMAZONAS`                     |     10        |    3          |   45          |    21        |   64         |  57          |
+ | `CARAJÁS`                            |     41        |    9          |   49          |    17        |   41         |   3          |
+ | `GUAJARÁ`                            |     131       |    95         |   109         |    232       |   127        |   200        |
+ | `GUAMÁ`                              |     61        |    51         |   67          |    42        |   56         |   92         |
+ | `LAGO DE TUCURUÍ`                    |     18        |    17         |   20          |    -         |   19         |   1          |
+ | `MARAJÓ`                             |     27        |     7         |   24          |    31        |   29         |   1          |
+ | `RIO CAETÉ`                          |     151       |    84         |   75          |    57        |   77         |   187        |
+ | `RIO CAPIM`                          |     21        |    8          |   75          |    17        |   21         |   9          |
+ | `TAPAJÓS`                            |     9         |    1          |   2           |    6         |   12         |   3          |
+ | `TOCANTINS`                          |     38        |   69          |   58          |    35        |   42         |   61         |
+ | `XINGU`                              |     7         |   11          |   10          |    23        |   31         |   3          |
+ | `PARÁ`                               | **514**       | **384**       | **559**       |   **493**    |  **540**     |  **637**     |
+**Fonte: SIGPLAN/CNP/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+# **Operações de Fiscalização** {.tabset .tabset-fade .tabset-pills}
+## **OPERAÇÕES**
+
+**Tabela 30**. Operações de Fiscalização de Trânsito por Tipos, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **OPERAÇÕES**          |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | $2021$        |
+ | :------------:         | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `OPERAÇÕES REALIZADAS` |   6.919       | 7.121         |  4.654         |  6.776         | 5.886         |               |
+ | `VEÍCULOS REMOVIDOS`   |   17.481      | 16.850        | 7.479          |  4.242         | 2.717         |               |
+ | `AUTUAÇÕES APLICADAS`  |   70.961      | 79.323        | 47.911         |  69.364        | 54.228        |               |
+ | `PARÁ`                 |  326.534      | 317.339       | 183.291        |  110.314       | 83.771        |               |
+**Fonte: COFT/DTO/DETRAN-PA**
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+## **REGIÃO DE INTEGRAÇÃO**
+
+**Tabela 31**. Operações de Fiscalização de Trânsito por Região de Integração, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **REGIÃo**             |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       | $2021$        |
+ | :------------:         | :-----------: |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `ARAGUAIA`             |               |   150         |   96           |    224         |   705         | 726           |
+ | `BAIXO AMAZONAS`       |               |   372         |   370          |    192         |   373         | 547           |
+ | `CARAJÁS`              |               |   251         |   86           |    323         |   939         | 1.138         |
+ | `GUAJARÁ`              |               |   3.874       |   2.297        |    2.037       |   3.701       | 4.870         |
+ | `GUAMÁ`                |               |   218         |   184          |    125         |   542         | 566           |
+ | `LAGO DO TUCURUÍ`      |               |   117         |   80           |    195         |   550         | 665           |
+ | `MARAJÓ`               |               |   51          |   53           |    85          |   222         | 285           |
+ | `RIO CAETÉ`            |               |   312         |   330          |    258         |   729         | 1.218         |
+ | `RIO CAPIM`            |               |   90          |   64           |    194         |   414         | 463           |
+ | `TAPAJÓS`              |               |   211         |   116          |    201         |   362         | 275           |
+ | `TOCANTINS`            |               |   765         |   534          |    398         |   1.363       | 2.426         |
+ | `XINGU`                |               |   156         |   98           |    103         |   153         | 378           |
+ | `PARÁ`                 |               |  6.567        |   4.308        |   4.335        |   10.053      | 13.583        |
+**Fonte: COFT/DTO/DETRAN-PA**
+
+
+
+
+
+# **Processos Jurídicos** {.tabset .tabset-fade .tabset-pills}
+
+## **DEFESA**
+
+**Tabela 31**. Processos Jurídicos de Trânsito por Tipos, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **PROCESSOS**           |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |$2021$         |
+ | :------------:          |:-----------:  |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `RECURSOS DE DEFESA`    |               |               |                |                |               |               |
+ | `CASSAÇÃO DE CNH`       |               |               |                |                |               |               |
+ | `SUSPENSÃO APLICADAS`   |               |               |                |                |               |               |
+ | `EFEITO SUSPENSIVO`     |               |               |                |                |               |               |
+ | `PARÁ`                  |               |               |                |                |               |               |
+**Fonte: PROJUR/DETRAN-PA**
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+## **CORREGEDORIA**
+
+A Realização das Ações da Corregedoria, tem a finalidade de viabilizar a atuação da Corregedoria do DETRAN-PA com medidas preventivas e corretivas para combater o cometimento de irregularidades na conduta dos servidores públicos. Para isso, são realizadas **Inspeções**, **Correições Administrativas**, **Sindicâncias** e **Processos Administrativos Disciplinares – PADs**.
+
+
+
+**Tabela 31**. Ações de Inspeção, Correição, Sindicâncias e PAD'S, segundo Ano no Estado do Pará, no período de 2016 a 2021.
+
+ | **Região**         |     $2016$    |    $2017$     |    $2018$      |     $2019$     |  $2020$       |   $2021$      |
+ | :------------:     |:-----------:  |:------------: | :------------: | :------------: |:------------: |:------------: |
+ | `ARAGUAIA`         |     7         |     7         |       4        |      -         |   7           |     7         |
+ | `BAIXO AMAZONAS`   |     1         |     1         |       3        |      -         |   2           |     4         |
+ | `CARAJÁS`          |     6         |     4         |       8        |      2         |   5           |     5         |
+ | `GUAJARÁ`          |     19        |     10        |       22       |      18        |   30          |     20        |
+ | `GUAMÁ`            |      7        |     11        |       10       |      7         |   7           |     2         |
+ | `LAGO DO TUCURUÍ`  |      3        |     5         |       2        |      -         |   1           |     -         |
+ | `MARAJÓ`           |      -        |     1         |       -        |      -         |   -           |     -         |
+ | `RIO CAETÉ`        |     3         |     5         |       9        |      2         |   10          |     4         |
+ | `RIO CAPIM`        |    3          |     7         |       8        |      6         |   6           |     3         |
+ | `TAPAJÓS`          |     -         |     3         |       1        |      1         |     1         |     -         |
+ | `TOCANTINS`        |     4         |     1         |       5        |      -         |   2           |     4         |
+ | `XINGU`            |     -         |     -         |       2        |      2         |   2           |     5         |
+ | `PARÁ`             |     53        |     55        |       74       |      38        |   73          |     54        |
+ **Fonte: CORREGEDORIA/DETRAN-PA**
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+ 
+ 
+ 
+
+
+
+# **Referências Bibliográficas**
+
+- R DEVELOPMENT CORE TEAM. R4.0: A language and Enviornment for Statistical Computing, 2020.<https://cran.r-project.org/bin/windows/base> 
+
+- RSTUDIO. Rstudio: Integrated Development Environment for R (versão 1.2.5).<https://rstudio.com/products/rstudio/download/#download>
+
+
+- Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang e Richard Iannone. 2020. Rmarkdown: Documentos dinâmicos para r.
+
+- Field, A. P., Miles, J., & Field, Z. (2012). Discovering statistics using R.<https://aedmoodle.ufpa.br/pluginfile.php/401852/mod_resource/content/5/Material_PDF/1.Discovering%20Statistics%20Using%20R.pdf>
+
+
+- Soares DFPP, Barros MBA. Fatores associados ao risco de internação por acidentes de trânsito no
+Município de Maringá-PR. Rev Bras Epidemiol. 2006 jun;9(2):193-205. Disponível em:<https://www.scielo.br/pdf/rbepid/v9n2/06.pdf>. Acesso em: 23 mar. 2021.
+
+
+- UNITED NATIONS. General Assembly. A/RES/64/255. Improving global road safety. Resolution adopted by the General Assembly on 2 March 2010. New York: United Nations, 2010. Disponível em:<https://undocs.org/en/A/RES/64/255>. Acesso em: 23 mar. 2021.
+
+- UNITED NATIONS. General Assembly. A/RES/74/299. Improving global road safety. Resolution adopted by the General Assembly on 31 August 2020. New York: United Nations, 2020. Disponível em:<https://www.un.org/en/ga/search/view_doc.asp?symbol=A/RES/74/299>. Acesso em: 23 mar. 2021.
+
+- UNITED NATIONS. General Assembly. A/74/304. Improving global road safety. Note by the Secretary-General. New York: United Nations, 13 August 2019. Disponível em:<https://undocs.org/en/A/74/304>. Acesso em: 23 mar. 2021. 
+
+
+- DETRAN-PA-Departamento Estadual de Trânsito do Pará. Relatório sobre Frota em circulação no Pará. 
+
+- DETRAN-PA-Departamento Estadual de Trânsito do Pará. Relatório de Condutores Habilitados no Pará.
+
+- ABNT NBR n°6067/2007, Veículos Rodoviários, seus reboques e combinados, Classificação terminologia e definições. 
+
+- ABNT NBR n°10697/2020, Pesquisas de Sinistros de Trânsito, Terminologia.
+
+
+<div class = "progress progress-stripes active">
+  <div class = "progress-bar" style = "width: 100%"> </div>
+</div>
+
+
+
+# **Créditos**
+
+- **DEPARTAMENTO DE TRÂNSITO DO ESTADO DO PARÁ - DETRAN-PA**
+- **MARCELO LIMA GUEDES (Diretor Geral)** 
+- **AVENIDA: AUGUSTO MONTENEGRO KM 03 S/N**
+- **CEP 66635-918 - PARQUE VERDE - BELÉM - PARÁ**
+- **<https://www.detran.pa.gov.br>**
+
+
+```{r, comentarios2, echo=FALSE, message=FALSE, warning=FALSE}
+#library(magrittr)
+#library(htmltools)
+#library(htmlwidgets)
+#library(leaflet)
+
+#M <- leaflet() %>%
+#  addTiles() %>%
+#  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+#M
+
+```
+
+
+<br>
+
+Esta publicação deve ser citada como: **Departamento de Trânsito do Estado do Pará (DETRAN-PA), Anuário Estatístico de Acidentes de Trânsito, 2020 (LC/PUB.2021/1-P), Belém, 2021**.
+
+<br>
+
+A autorização para a reprodução total ou parcial deste trabalho deve ser solicitada ao Departamento de Trânsito do Estado do Pará, Gerência de Análise e Estatística de Trânsito, gerest@detran.pa.gov.br. Os Estados membros das Nações Unidas e suas instituições governamentais podem reproduzir este trabalho sem autorização prévia. Solicita-se apenas que mencionem a fonte e informem ao DETRAN-PA de tal reprodução.
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+# **Sugestões**
+
+
+Reclamações, sugestões, críticas e elogios relacionados ao Anuário
+Estatístico de Acidentes de Trânsito do DETRAN-PA podem ser registrados na Gerência de Análise Estatística de Trânsito, por intermédio do e-mail: gerest@detran.pa.gov.br
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+```{r comentarios, echo=FALSE, message=FALSE, warning=FALSE}
+#library(shiny)
+#library(htmlwidgets)
+#library(htmltools)
+#library(htmlTable)
+#library(networkD3)
+
+
+
+#textInput("name", "Qual è o Seu Nome?")
+#numericInput("age", "Qual é a sua Idade?", NA, min = 0, max = 150)
+#textInput("name", "Qual è o Seu E-mail?")
+
+
+
+#data(MisLinks, MisNodes)
+#forceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+#             Target = "target", Value = "value", NodeID = "name",
+#             Group = "group", opacity = 0.4)
+
+
+
+
+#question("What number is the letter A in the English alphabet?",
+#  answer("8"),
+#  answer("14"),
+#  answer("1", correct = TRUE),
+# answer("23"))
+
+
+```
+
+
+
+<div class = "progress">
+  <div class = "progress-bar" style = "width: 100%;"> </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
